@@ -72,7 +72,7 @@ class UsersController extends Controller {
             'message' => $request['message'],
         ]);
 
-        return redirect()->route('sistema.user.index');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -99,7 +99,7 @@ class UsersController extends Controller {
     public function edit($id) {
 
         $user = $this->repository->find($id);
-        
+
         $birth = explode('-', $user->birth);
         $birth = $birth[2] . '/' . $birth[1] . '/' . $birth[0];
         $user->birth = $birth;
@@ -149,6 +149,30 @@ class UsersController extends Controller {
         ]);
 
         return redirect()->route('user.index');
+    }
+
+    public function getUserXls() {
+
+        $users = $this->repository->all();
+        
+        $data = array();
+
+        foreach ($users as $user) {
+            $data[][] = $user['cpf'];
+            $data[][].= $user['name'];
+            $data[][].= $user['email'];
+            $data[][].= $user['phone'];
+            $data[][].= $user['birth'];
+            $data[][].= $user['gender'];
+            $data[][].= $user['notes'];
+        }
+        
+        \Excel::create('File', function($excel) use($data) {
+            $excel->sheet('Sheet', function($sheet) use($data) {
+                //Create rows
+                $sheet->rows($data);
+            });
+        })->download('xls');
     }
 
 }

@@ -12,11 +12,11 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Entities;
  */
-class Banners extends Model implements Transformable
-{
+class Banners extends Model implements Transformable {
+
     use TransformableTrait;
     use SoftDeletes;
-    
+
     public $timestamps = true;
     protected $table = 'banners';
 
@@ -26,5 +26,18 @@ class Banners extends Model implements Transformable
      * @var array
      */
     protected $fillable = ['name', 'imagem', 'ativo'];
+
+    public function getFormattedAtivoAttribute() {
+
+        $ativo = $this->attributes['ativo'];
+
+        if ($ativo == 1) {
+            $ativo = "Ativo";
+        } else {
+            $ativo = "Desativo";
+        }
+
+        return $ativo;
+    }
 
 }

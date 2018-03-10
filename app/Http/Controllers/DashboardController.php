@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Hash;
+//use Illuminate\Database\QueryException;
+//use Illuminate\Support\Facades\Hash;
 use App\Repositories\UserRepository;
+use App\Repositories\BannersRepository;
 use App\Validators\UserValidator;
-use Exception;
+//use Illuminate\Support\Facades\DB;
+//use Exception;
 use Auth;
 
 class DashboardController extends Controller {
@@ -15,13 +17,21 @@ class DashboardController extends Controller {
     private $repository;
     private $validator;
 
-    public function __construct(UserRepository $repository, UserValidator $validator) {
+    public function __construct(UserRepository $repository, UserValidator $validator, BannersRepository $r_banner) {
         $this->repository = $repository;
+        $this->r_banner = $r_banner;
         $this->validator = $validator;
     }
 
     public function index() {
-        return view('sistema.index');
+
+    $count_user = $this->repository->all()->count();
+    $count_banner = $this->r_banner->all()->count();
+        
+        return view('sistema.index', [
+            'count_user' => $count_user,
+            'count_banner' => $count_banner
+        ]);
     }
 
     public function fazerLogin() {

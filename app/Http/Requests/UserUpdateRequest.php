@@ -24,7 +24,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cpf' => 'required', 
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|unique:users,email',
         ];
     }
 }

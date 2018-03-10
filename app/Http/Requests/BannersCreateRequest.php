@@ -24,7 +24,7 @@ class BannersCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

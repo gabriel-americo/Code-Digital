@@ -22,3 +22,16 @@
     color: #555;
     filter: none;
 }
+
+.button-mr10 {
+    margin-right: 10px;
+}
+
+.d-none {
+    display: none;
+}
+
+.text-light {
+    color: white;
+}
+

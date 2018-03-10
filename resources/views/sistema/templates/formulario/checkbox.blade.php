@@ -6,6 +6,6 @@ $attributes['placeholder'] = $attributes['placeholder'] ?? $label;
 
 <label class="mt-checkbox mt-checkbox-outline">{{ $label ?? $input ?? "ERRO" }}
 
-    {!! Form::checkbox($checkbox, $value ?? null, $attributes) !!}
+    {!! Form::checkbox($checkbox, null, null, $attributes) !!}
     <span></span>
 </label>

@@ -29,11 +29,11 @@
                             <span class="caption-subject bold uppercase"> Banners</span>
                         </div>
                     </div>
-                    
+
                     @if(session('success'))
                     <h4>{{ session('success')['message'] }}</h4>
                     @endif
-                    
+
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="row">
@@ -44,83 +44,29 @@
                                         </a>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
-                                    <div class="btn-group pull-right">
-                                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Ferramentas
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li>
-                                                <a href="javascript:window.print()">
-                                                    <i class="fas fa-print"></i> Imprimir </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="far fa-file-pdf"></i> Salvar como PDF </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">
-                                                    <i class="far fa-file-excel"></i> Exportar para Excel </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" data-form="deleteForm">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
-                                            <span></span>
-                                        </label>
-                                    </th>
-                                    <th> # </th>
-                                    <th> Nome </th>
-                                    <th> Imagem </th>
-                                    <th> Ativo </th>
-                                    <th> Opções </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($banners as $banner)
-                                <tr class="odd gradeX">
-                                    <td>
-                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                            <input type="checkbox" class="checkboxes" value="1" />
-                                            <span></span>
-                                        </label>
-                                    </td>
-                                    <td>{{ $banner->id }} </td>
-                                    <td>{{ $banner->name }}</td>
-                                    <td>{{ $banner->imagem }}</td>
-                                    <td>{{ $banner->ativo }}</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Ações
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li>
-                                                    <a href="{{ route('banner.edit', $banner->id) }}"> <i class="icon-docs"></i> Editar </a>
-                                                </li>
-                                                <li>
-                                                    <div class="trash">
-                                                        {!! Form::open(['route' => ['banner.destroy', $banner->id], 'method' => 'delete', 'class' =>'form-delete']) !!}
-                                                        <i class="icon-trash"></i> @include('sistema.templates.formulario.submit', ['input' => 'Excluir', 'attributes' => ['class' => 'input-trash']])
-                                                        {!! Form::close() !!}
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            @foreach($banners as $banner)
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="/img/background/{{ $banner->imagem }}"  alt="" style="width: 100%; height: 200px;">
+                                    <div class="caption">
+                                        <h3>{{ $banner->name }}</h3>
+                                        <p>{{ $banner->formatted_ativo }}</p>
+                                        <p class="pull-left button-mr10">
+                                            <a href="{{ route('banner.edit', $banner->id) }}" class="btn blue"> <i class="icon-pencil"></i> Editar </a>
+                                            {!! Form::open(['route' => ['banner.destroy', $banner->id], 'method' => 'delete', 'class' =>'form-delete']) !!}
+                                            @include('sistema.templates.formulario.submit', ['input' => 'Excluir', 'attributes' => ['class' => 'btn btn-danger']])
+                                            {!! Form::close() !!}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
                     </div>
                 </div>
             </div>

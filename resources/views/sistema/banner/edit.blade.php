@@ -15,7 +15,7 @@
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <span>Usuários</span>
+                    <span>Banners</span>
                 </li>
             </ul>
         </div>
@@ -28,9 +28,9 @@
             <div class="col-md-12 ">
                 <div class="portlet light ">
                     <div class="portlet-body form">
-                        {!! Form::model($user, ['route' => ['banner.update', $user->id], 'method' => 'put']) !!}
+                        {!! Form::model($banner, ['route' => ['banner.update', $banner->id], 'method' => 'put', 'files' => true]) !!}
                         @include('sistema.banner.form-fields')
-                        <div class="form-actions right">
+                        <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Atualizar', 'attributes' => ['class' => 'btn green']])
                         </div>
                         {!! Form::close() !!}

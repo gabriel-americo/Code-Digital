@@ -25,13 +25,13 @@ class BannerService {
         try {
 
             $file = $data['imagem'];
-            
-            //Move Uploaded File
             $destinationPath = 'img/background';
+
+            //Move Uploaded File
             $file->move($destinationPath, $file->getClientOriginalName());
-            
+
             $data['imagem'] = $file->getClientOriginalName();
-            $data['ativo']= (isset($data['ativo']) == '1' ? '1' : '0');
+            $data['ativo'] = (isset($data['ativo']) == '1' ? '1' : '0');
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
             $banner = $this->repository->create($data);
@@ -55,19 +55,19 @@ class BannerService {
     public function update($data, $id) {
 
         try {
-            
+
             $file = $data['imagem'];
 
-            if(!empty($file)) {
-                
+            if (!empty($file)) {
+
                 //Move Uploaded File
                 $destinationPath = 'img/background';
                 $file->move($destinationPath, $file->getClientOriginalName());
-                
+
                 $data['imagem'] = $file->getClientOriginalName();
             }
 
-            $data['ativo']= (isset($data['ativo']) == '1' ? '1' : '0');
+            $data['ativo'] = (isset($data['ativo']) == '1' ? '1' : '0');
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $banner = $this->repository->update($data, $id);

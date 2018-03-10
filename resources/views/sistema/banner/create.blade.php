@@ -20,6 +20,17 @@
             </ul>
         </div>
 
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         @if(session('success'))
         <h3>{{ session('success')['message'] }}</h3>
         @endif
@@ -30,7 +41,7 @@
                     <div class="portlet-body form">
                         {!! Form::open(['route' => 'banner.store', 'method' => 'post', 'files' => true]) !!}
                         @include('sistema.banner.form-fields')
-                        <div class="form-actions right">
+                        <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Cadastrar', 'attributes' => ['class' => 'btn green']])
                         </div>
                         {!! Form::close() !!}

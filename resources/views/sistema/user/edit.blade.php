@@ -30,7 +30,7 @@
                     <div class="portlet-body form">
                         {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put']) !!}
                         @include('sistema.user.form-fields')
-                        <div class="form-actions right">
+                        <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Atualizar', 'attributes' => ['class' => 'btn green']])
                         </div>
                         {!! Form::close() !!}

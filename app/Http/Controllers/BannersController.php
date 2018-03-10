@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\BannersCreateRequest;
 use App\Http\Requests\BannersUpdateRequest;
 use App\Repositories\BannersRepository;
@@ -30,7 +26,7 @@ class BannersController extends Controller {
      * @param BannersValidator $validator
      */
     public function __construct(BannersRepository $repository, BannersValidator $validator, BannerService $service) {
-        
+
         $this->repository = $repository;
         $this->validator = $validator;
         $this->service = $service;
@@ -42,14 +38,14 @@ class BannersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        
+
         $banners = $this->repository->all();
 
         return view('sistema.banner.index', [
             'banners' => $banners
         ]);
     }
-    
+
     public function create() {
 
         return view('sistema.banner.create');
@@ -116,7 +112,7 @@ class BannersController extends Controller {
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(BannersUpdateRequest $request, $id) {
-        
+
         $request = $this->service->update($request->all(), $id);
         $banner = $request['success'] ? $request['data'] : null;
 
@@ -136,7 +132,7 @@ class BannersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        
+
         $request = $this->service->destroy($id);
 
         session()->flash('success', [

@@ -180,8 +180,8 @@
 
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="/assets/layouts/layout2/img/avatar3_small.jpg" />
-                                    <span class="username username-hide-on-mobile"> {{ Auth::user()->name }} </span>
+                                    <img alt="" class="img-circle" src="/img_sistema/perfil/{{ Auth::user()->imagem }}" />
+                                    <span class="username username-hide-on-mobile"> {{ Auth::user()->nome }} </span>
                                     <i class="fas fa-arrow-alt-circle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">

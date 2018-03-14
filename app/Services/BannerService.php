@@ -29,8 +29,8 @@ class BannerService {
 
             //Move Uploaded File
             $file->move($destinationPath, $file->getClientOriginalName());
-
             $data['imagem'] = $file->getClientOriginalName();
+
             $data['ativo'] = (isset($data['ativo']) == '1' ? '1' : '0');
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);

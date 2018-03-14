@@ -2,12 +2,12 @@
     <div class="page-sidebar navbar-collapse collapse">
 
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-            <li class="nav-item {{ request()->is('sistema/user', 'sistema/user/*') ? 'start active open' : '' }}">
+
+            <li class="nav-item start {{ request()->is('sistema/user', 'sistema/user/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fas fa-user"></i>
                     <span class="title">Usuários</span>
                     <span class="selected"></span>
-                    <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item {{ request()->is('sistema/user/create') ? 'start active open' : '' }}">
@@ -27,12 +27,11 @@
                 </ul>
             </li>
             
-            <li class="nav-item {{ request()->is('sistema/banner', 'sistema/banner/*') ? 'start active open' : '' }}">
+            <li class="nav-item start {{ request()->is('sistema/banner', 'sistema/banner/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fas fa-image"></i>
                     <span class="title">Banner</span>
                     <span class="selected"></span>
-                    <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item {{ request()->is('sistema/banner/create') ? 'start active open' : '' }}">
@@ -52,7 +51,7 @@
                 </ul>
             </li>
             
-            <li class="nav-item {{ request()->is('sistema/trabalho', 'sistema/trabalho/*') ? 'start active open' : '' }}">
+            <!--<li class="nav-item {{ request()->is('sistema/trabalho', 'sistema/trabalho/*') ? 'start active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fas fa-image"></i>
                     <span class="title">Trabalhos</span>
@@ -100,7 +99,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
+
         </ul>
 
     </div>

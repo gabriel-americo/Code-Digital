@@ -24,23 +24,30 @@ class UserService {
 
         try {
 
-            /* Date */
-            $birth = explode('/', $data['birth']);
+            /* Imagem */
+            $file = $data['imagem'];
+            $destinationPath = 'img_sistema/perfil';
+
+            /* Move Uploaded File */
+            $file->move($destinationPath, $file->getClientOriginalName());
+            $data['imagem'] = $file->getClientOriginalName();
+
+            /* Data */
+            $birth = explode('/', $data['nascimento']);
             $birth = $birth[2] . '-' . $birth[1] . '-' . $birth[0];
-            ;
-            $data['birth'] = $birth;
+            $data['nascimento'] = $birth;
 
             /* CPF */
             $cpf = str_replace('.', '', $data['cpf']);
             $cpf = str_replace('-', '', $cpf);
             $data['cpf'] = $cpf;
 
-            /* Fone */
-            $phone = str_replace('(', '', $data['phone']);
+            /* Telefone */
+            $phone = str_replace('(', '', $data['telefone']);
             $phone = str_replace(')', '', $phone);
             $phone = str_replace(' ', '', $phone);
             $phone = str_replace('-', '', $phone);
-            $data['phone'] = $phone;
+            $data['telefone'] = $phone;
 
             /* Password */
             $pass = bcrypt($data['password']);
@@ -68,24 +75,31 @@ class UserService {
     public function update($data, $id) {
 
         try {
-            
-            /* Date */
-            $birth = explode('/', $data['birth']);
+
+            /* Imagem */
+            $file = $data['imagem'];
+            $destinationPath = 'img_sistema/perfil';
+
+            /* Move Uploaded File */
+            $file->move($destinationPath, $file->getClientOriginalName());
+            $data['imagem'] = $file->getClientOriginalName();
+
+            /* Data */
+            $birth = explode('/', $data['nascimento']);
             $birth = $birth[2] . '-' . $birth[1] . '-' . $birth[0];
-            ;
-            $data['birth'] = $birth;
+            $data['nascimento'] = $birth;
 
             /* CPF */
             $cpf = str_replace('.', '', $data['cpf']);
             $cpf = str_replace('-', '', $cpf);
             $data['cpf'] = $cpf;
 
-            /* Fone */
-            $phone = str_replace('(', '', $data['phone']);
+            /* Telefone */
+            $phone = str_replace('(', '', $data['telefone']);
             $phone = str_replace(')', '', $phone);
             $phone = str_replace(' ', '', $phone);
             $phone = str_replace('-', '', $phone);
-            $data['phone'] = $phone;
+            $data['telefone'] = $phone;
 
             /* Password */
             $pass = bcrypt($data['password']);

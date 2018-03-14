@@ -24,7 +24,17 @@ class BannersCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nome' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        // mensagens de erro personalizadas!
+        return [
+            'imagem.required' => 'O campo :attribute é obrigatório',
+            'nome.required' => 'O campo :attribute é obrigatório'
         ];
     }
 }

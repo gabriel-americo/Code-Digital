@@ -16,9 +16,11 @@ class CreateBannersTable extends Migration {
     public function up() {
         Schema::create('banners', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
+            $table->string('nome', 50);
             $table->string('imagem', 250);
-            $table->boolean('ativo');
+            $table->date('data_inicio', 250)->nullable();
+            $table->date('data_fim', 250)->nullable();
+            $table->boolean('status');
             
             $table->timestamps();
             $table->softDeletes();

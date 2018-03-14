@@ -24,9 +24,7 @@ class User extends Authenticatable {
      *
      * @var array
      */
-    protected $fillable = [
-        'cpf', 'name', 'phone', 'birth', 'gender', 'notes', 'email', 'password', 'status', 'permission'
-    ];
+    protected $fillable = ['cpf', 'nome', 'telefone', 'nascimento', 'sexo', 'descricao', 'email', 'password', 'status', 'permission', 'imagem'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -49,16 +47,16 @@ class User extends Authenticatable {
         return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, -2);
     }
 
-    public function getFormattedPhoneAttribute() {
+    public function getFormattedTelefoneAttribute() {
 
-        $phone = $this->attributes['phone'];
+        $phone = $this->attributes['telefone'];
 
         return '(' . substr($phone, 0, 2) . ') ' . substr($phone, 2, 4) . '-' . substr($phone, -4);
     }
 
-    public function getFormattedBirthAttribute() {
+    public function getFormattedNascimentoAttribute() {
 
-        $birth = explode('-', $this->attributes['birth']);
+        $birth = explode('-', $this->attributes['nascimento']);
 
         if (count($birth) != 3) {
             return "";
@@ -68,9 +66,9 @@ class User extends Authenticatable {
         return $birth;
     }
 
-    public function getFormattedGenderAttribute() {
+    public function getFormattedSexoAttribute() {
 
-        $gender = $this->attributes['gender'];
+        $gender = $this->attributes['sexo'];
 
         if ($gender == 'M') {
             $gender = "Masculino";

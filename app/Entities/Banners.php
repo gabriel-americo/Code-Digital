@@ -25,11 +25,11 @@ class Banners extends Model implements Transformable {
      *
      * @var array
      */
-    protected $fillable = ['name', 'imagem', 'ativo'];
+    protected $fillable = ['nome', 'imagem', 'status', 'data_inicio', 'data_fim'];
 
-    public function getFormattedAtivoAttribute() {
+    public function getFormattedStatusAttribute() {
 
-        $ativo = $this->attributes['ativo'];
+        $ativo = $this->attributes['status'];
 
         if ($ativo == 1) {
             $ativo = "Ativo";

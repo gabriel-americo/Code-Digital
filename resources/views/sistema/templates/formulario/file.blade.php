@@ -8,4 +8,4 @@ $attributes['placeholder'] = $attributes['placeholder'] ?? $label;
 
 {!! Form::file($file, $value ?? null, $attributes) !!}
 
-<p class="help-block"> Coloque uma imagem JPG. </p>
+<p class="help-block"> {{ $note  }} </p>

@@ -28,7 +28,7 @@
             <div class="col-md-12 ">
                 <div class="portlet light ">
                     <div class="portlet-body form">
-                        {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put']) !!}
+                        {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'files' => true]) !!}
                         @include('sistema.user.form-fields')
                         <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Atualizar', 'attributes' => ['class' => 'btn green']])

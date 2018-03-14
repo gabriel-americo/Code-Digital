@@ -9,18 +9,21 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\QueryException;
 use Exception;
 
-class BannerService {
+class BannerService
+{
 
     private $repository;
     private $validator;
 
-    public function __construct(UserRepository $repository, UserValidator $validator) {
+    public function __construct(UserRepository $repository, UserValidator $validator)
+    {
 
         $this->repository = $repository;
         $this->validator = $validator;
     }
 
-    public function store($data) {
+    public function store($data)
+    {
 
         try {
 
@@ -35,15 +38,20 @@ class BannerService {
         } catch (Exception $e) {
 
             switch (get_class($e)) {
-                case QueryException::class : return ['success' => false, 'message' => $e->getMessage()];
-                case ValidatorException::class : return ['success' => false, 'message' => $e->getMessageBag()];
-                case Exception::class : return['success' => false, 'message' => $e->getMessage()];
-                default : return ['success' => false, 'message' => $e->getMessage()];
+                case QueryException::class :
+                    return ['success' => false, 'message' => $e->getMessage()];
+                case ValidatorException::class :
+                    return ['success' => false, 'message' => $e->getMessageBag()];
+                case Exception::class :
+                    return ['success' => false, 'message' => $e->getMessage()];
+                default :
+                    return ['success' => false, 'message' => $e->getMessage()];
             }
         }
     }
 
-    public function update($data, $id) {
+    public function update($data, $id)
+    {
 
         try {
 
@@ -58,15 +66,20 @@ class BannerService {
         } catch (Exception $e) {
 
             switch (get_class($e)) {
-                case QueryException::class : return ['success' => false, 'message' => $e->getMessage()];
-                case ValidatorException::class : return ['success' => false, 'message' => $e->getMessageBag()];
-                case Exception::class : return['success' => false, 'message' => $e->getMessage()];
-                default : return ['success' => false, 'message' => $e->getMessage()];
+                case QueryException::class :
+                    return ['success' => false, 'message' => $e->getMessage()];
+                case ValidatorException::class :
+                    return ['success' => false, 'message' => $e->getMessageBag()];
+                case Exception::class :
+                    return ['success' => false, 'message' => $e->getMessage()];
+                default :
+                    return ['success' => false, 'message' => $e->getMessage()];
             }
         }
     }
 
-    public function destroy($banner_id) {
+    public function destroy($banner_id)
+    {
 
         try {
 
@@ -80,10 +93,14 @@ class BannerService {
         } catch (Exception $e) {
 
             switch (get_class($e)) {
-                case QueryException::class : return ['success' => false, 'message' => $e->getMessage()];
-                case ValidatorException::class : return ['success' => false, 'message' => $e->getMessageBag()];
-                case Exception::class : return['success' => false, 'message' => $e->getMessage()];
-                default : return ['success' => false, 'message' => $e->getMessage()];
+                case QueryException::class :
+                    return ['success' => false, 'message' => $e->getMessage()];
+                case ValidatorException::class :
+                    return ['success' => false, 'message' => $e->getMessageBag()];
+                case Exception::class :
+                    return ['success' => false, 'message' => $e->getMessage()];
+                default :
+                    return ['success' => false, 'message' => $e->getMessage()];
             }
         }
     }

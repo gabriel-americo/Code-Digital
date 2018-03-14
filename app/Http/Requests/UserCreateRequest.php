@@ -25,7 +25,7 @@ class UserCreateRequest extends FormRequest
     {
         return [
             'cpf' => 'required', 
-            'name' => 'required|min:2',
+            'nome' => 'required|min:2',
             'email' => 'required|unique:users,email',
         ];
     }
@@ -35,8 +35,8 @@ class UserCreateRequest extends FormRequest
         // mensagens de erro personalizadas!
         return [
             'cpf.required' => 'O campo :attribute é obrigatório',
-            'name.required' => 'O campo :attribute é obrigatório',
-            'name.min' => 'O campo tem que ter mais do que 2 caracteres ',
+            'nome.required' => 'O campo :attribute é obrigatório',
+            'nome.min' => 'O campo tem que ter mais do que 2 caracteres ',
             'email.required' => 'O campo :attribute é obrigatório',
             'email.email' => 'O campo :attribute tem que ser um email',
             'email.unique:users' => 'O campo :attribute já existe',

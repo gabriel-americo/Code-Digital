@@ -38,7 +38,7 @@
             <div class="col-md-12 ">
                 <div class="portlet light ">
                     <div class="portlet-body form">
-                        {!! Form::open(['route' => 'user.store', 'method' => 'post']) !!}
+                        {!! Form::open(['route' => 'user.store', 'method' => 'post', 'files' => true]) !!}
                         @include('sistema.user.form-fields')
                         <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Cadastrar', 'attributes' => ['class' => 'btn green']])

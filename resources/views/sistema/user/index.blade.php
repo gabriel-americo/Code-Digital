@@ -106,10 +106,10 @@
                                         </td>
                                         <td>{{ $user->id }} </td>
                                         <td>{{ $user->formatted_cpf }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->formatted_phone }}</td>
-                                        <td>{{ $user->formatted_birth }}</td>
-                                        <td>{{ $user->formatted_gender }}</td>
+                                        <td>{{ $user->nome }}</td>
+                                        <td>{{ $user->formatted_telefone }}</td>
+                                        <td>{{ $user->formatted_nascimento }}</td>
+                                        <td>{{ $user->formatted_sexo }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->status }}</td>
                                         <td>{{ $user->permission }}</td>

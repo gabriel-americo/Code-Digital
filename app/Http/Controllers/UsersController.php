@@ -100,9 +100,9 @@ class UsersController extends Controller {
 
         $user = $this->repository->find($id);
 
-        $birth = explode('-', $user->birth);
+        $birth = explode('-', $user->nascimento);
         $birth = $birth[2] . '/' . $birth[1] . '/' . $birth[0];
-        $user->birth = $birth;
+        $user->nascimento = $birth;
 
         return view('sistema.user.edit', [
             'user' => $user,
@@ -159,12 +159,12 @@ class UsersController extends Controller {
 
         foreach ($users as $user) {
             $data[][] = $user['cpf'];
-            $data[][].= $user['name'];
+            $data[][].= $user['nome'];
             $data[][].= $user['email'];
-            $data[][].= $user['phone'];
-            $data[][].= $user['birth'];
-            $data[][].= $user['gender'];
-            $data[][].= $user['notes'];
+            $data[][].= $user['telefone'];
+            $data[][].= $user['nascimento'];
+            $data[][].= $user['sexo'];
+            $data[][].= $user['descricao'];
         }
         
         \Excel::create('File', function($excel) use($data) {

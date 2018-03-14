@@ -74,32 +74,32 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>-->
             
-            <li class="nav-item {{ request()->is('sistema/portifolio', 'sistema/portifolio/*') ? 'start active open' : '' }}">
+            <li class="nav-item start {{ request()->is('sistema/portifolio', 'sistema/portifolio/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="fas fa-image"></i>
-                    <span class="title">Portfolio</span>
+                    <i class="far fa-images"></i>
+                    <span class="title">Portfólio</span>
                     <span class="selected"></span>
                     <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item {{ request()->is('sistema/portifolio/create') ? 'start active open' : '' }}">
-                        <a href="{{ route('banner.create') }}" class="nav-link ">
+                    <li class="nav-item start {{ request()->is('sistema/portifolio/create') ? 'active open' : '' }}">
+                        <a href="{{ route('portifolio.create') }}" class="nav-link ">
                             <i class="fas fa-images"></i>
-                            <span class="title">Adicionar Portfolio</span>
+                            <span class="title">Adicionar Portfólio</span>
                             <span class="selected"></span>
                         </a>
                     </li>
-                    <li class="nav-item {{ request()->is('sistema/portifolio') ? 'start active open' : '' }}">
-                        <a href="{{ route('banner.index') }}" class="nav-link ">
+                    <li class="nav-item start {{ request()->is('sistema/portifolio') ? 'active open' : '' }}">
+                        <a href="{{ route('portifolio.index') }}" class="nav-link ">
                             <i class="fas fa-image"></i>
-                            <span class="title">Listar Portfolio</span>
+                            <span class="title">Listar Portfólio</span>
                             <span class="selected"></span>
                         </a>
                     </li>
                 </ul>
-            </li>-->
+            </li>
 
         </ul>
 

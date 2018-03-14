@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreatePortifoliosTable.
+ * Class CreateCategoriaPortifoliosTable.
  */
-class CreatePortifoliosTable extends Migration
+class CreateCategoriaPortifoliosTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -15,15 +15,13 @@ class CreatePortifoliosTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('portifolios', function(Blueprint $table) {
+		Schema::create('categoria_portifolios', function(Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 70);
-            $table->string('imagem', 250);
+            $table->string('url', 70);
 
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('categoria_portifolios_id')->references('id')->on('categoria_portifolios');
 		});
 	}
 
@@ -34,6 +32,6 @@ class CreatePortifoliosTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('portifolios');
+		Schema::drop('categoria_portifolios');
 	}
 }

@@ -81,6 +81,7 @@ class BannersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
+
         $banner = $this->repository->find($id);
 
         return view('sistema.banner.show');
@@ -94,7 +95,16 @@ class BannersController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+
         $banner = $this->repository->find($id);
+
+        $inicio = explode('-', $banner->data_inicio);
+        $inicio = $inicio[2] . '/' . $inicio[1] . '/' . $inicio[0];
+        $banner->data_inicio = $inicio;
+
+        $fim = explode('-', $banner->data_fim);
+        $fim = $fim[2] . '/' . $fim[1] . '/' . $fim[0];
+        $banner->data_fim = $fim;
 
         return view('sistema.banner.edit', [
             'banner' => $banner,

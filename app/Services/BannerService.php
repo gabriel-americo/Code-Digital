@@ -31,7 +31,21 @@ class BannerService {
             $file->move($destinationPath, $file->getClientOriginalName());
             $data['imagem'] = $file->getClientOriginalName();
 
-            $data['ativo'] = (isset($data['ativo']) == '1' ? '1' : '0');
+            $data['status'] = (isset($data['status']) == '1' ? '1' : '0');
+
+            /* Data inicio */
+            if(isset($data['data_inicio'])) {
+                $inicio = explode('/', $data['data_inicio']);
+                $inicio = $inicio[2] . '-' . $inicio[1] . '-' . $inicio[0];
+                $data['data_inicio'] = $inicio;
+            }
+
+            /* Data fim */
+            if(isset($data['data_fim'])) {
+                $fim = explode('/', $data['data_fim']);
+                $fim = $fim[2] . '-' . $fim[1] . '-' . $fim[0];
+                $data['data_fim'] = $fim;
+            }
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
             $banner = $this->repository->create($data);
@@ -67,7 +81,17 @@ class BannerService {
                 $data['imagem'] = $file->getClientOriginalName();
             }
 
-            $data['ativo'] = (isset($data['ativo']) == '1' ? '1' : '0');
+            /* Data inicio */
+            $inicio = explode('/', $data['data_inicio']);
+            $inicio = $inicio[2] . '-' . $inicio[1] . '-' . $inicio[0];
+            $data['data_inicio'] = $inicio;
+
+            /* Data fim */
+            $fim = explode('/', $data['data_fim']);
+            $fim = $fim[2] . '-' . $fim[1] . '-' . $fim[0];
+            $data['data_fim'] = $fim;
+
+            $data['status'] = (isset($data['status']) == '1' ? '1' : '0');
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $banner = $this->repository->update($data, $id);

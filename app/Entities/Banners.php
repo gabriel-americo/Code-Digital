@@ -40,4 +40,30 @@ class Banners extends Model implements Transformable {
         return $ativo;
     }
 
+    public function getFormattedDataInicioAttribute() {
+
+        $data_inicio = explode('-', $this->attributes['data_inicio']);
+
+        if (count($data_inicio) != 3) {
+            return "";
+        }
+        $data_inicio = $data_inicio[2] . '/' . $data_inicio[1] . '/' . $data_inicio[0];
+
+        return $data_inicio;
+    }
+
+    public function getFormattedDataFimAttribute() {
+
+        $data_fim = $this->attributes['data_fim'];
+
+        $data_fim = explode('-', $this->attributes['data_fim']);
+
+        if (count($data_fim) != 3) {
+            return "";
+        }
+        $data_fim = $data_fim[2] . '/' . $data_fim[1] . '/' . $data_fim[0];
+
+        return $data_fim;
+    }
+
 }

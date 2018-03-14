@@ -29,7 +29,6 @@ Route::group(['middleware' => 'login'], function() {
     /* Routes crud in the dashboard */
     Route::resource('sistema/user', 'UsersController');
     Route::resource('sistema/banner', 'BannersController');
-    Route::resource('sistema/trabalho', 'TrabalhosController');
     Route::resource('sistema/portifolio', 'PortifoliosController');
 });
 

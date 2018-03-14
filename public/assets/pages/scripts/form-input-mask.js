@@ -5,7 +5,11 @@ var FormInputMask = function () {
         $("#mask_date").inputmask("d/m/y", {
             autoUnmask: true
         }); //direct mask
-        
+
+        $("#mask_date3").inputmask("d/m/y", {
+            autoUnmask: true
+        }); //direct mask
+
         $("#mask_cpf").inputmask("999.999.999-99", {
             reverse: true
         });

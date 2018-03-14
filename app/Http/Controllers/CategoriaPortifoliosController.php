@@ -7,38 +7,38 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\PortifoliosCreateRequest;
-use App\Http\Requests\PortifoliosUpdateRequest;
-use App\Repositories\PortifoliosRepository;
-use App\Validators\PortifoliosValidator;
+use App\Http\Requests\CategoriaPortifolioCreateRequest;
+use App\Http\Requests\CategoriaPortifolioUpdateRequest;
+use App\Repositories\CategoriaPortifolioRepository;
+use App\Validators\CategoriaPortifolioValidator;
 
 /**
- * Class PortifoliosController.
+ * Class CategoriaPortifoliosController.
  *
  * @package namespace App\Http\Controllers;
  */
-class PortifoliosController extends Controller
+class CategoriaPortifoliosController extends Controller
 {
     /**
-     * @var PortifoliosRepository
+     * @var CategoriaPortifolioRepository
      */
     protected $repository;
 
     /**
-     * @var PortifoliosValidator
+     * @var CategoriaPortifolioValidator
      */
     protected $validator;
 
     /**
-     * PortifoliosController constructor.
+     * CategoriaPortifoliosController constructor.
      *
-     * @param PortifoliosRepository $repository
-     * @param PortifoliosValidator $validator
+     * @param CategoriaPortifolioRepository $repository
+     * @param CategoriaPortifolioValidator $validator
      */
-    public function __construct(PortifoliosRepository $repository, PortifoliosValidator $validator)
+    public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator)
     {
         $this->repository = $repository;
-        $this->validator = $validator;
+        $this->validator  = $validator;
     }
 
     /**
@@ -48,39 +48,39 @@ class PortifoliosController extends Controller
      */
     public function index()
     {
+        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $categoriaPortifolios = $this->repository->all();
 
-        $portfolios = $this->repository->all();
+        if (request()->wantsJson()) {
 
-        return view('sistema.portfolio.index', [
-            'portfolios' => $portfolios
-        ]);
-    }
+            return response()->json([
+                'data' => $categoriaPortifolios,
+            ]);
+        }
 
-    public function create() {
-
-        return view('sistema.portfolio.create');
+        return view('categoriaPortifolios.index', compact('categoriaPortifolios'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  PortifoliosCreateRequest $request
+     * @param  CategoriaPortifolioCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(PortifoliosCreateRequest $request)
+    public function store(CategoriaPortifolioCreateRequest $request)
     {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $portifolio = $this->repository->create($request->all());
+            $categoriaPortifolio = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'Portifolios created.',
-                'data' => $portifolio->toArray(),
+                'message' => 'CategoriaPortifolio created.',
+                'data'    => $categoriaPortifolio->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -92,7 +92,7 @@ class PortifoliosController extends Controller
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
-                    'error' => true,
+                    'error'   => true,
                     'message' => $e->getMessageBag()
                 ]);
             }
@@ -110,16 +110,16 @@ class PortifoliosController extends Controller
      */
     public function show($id)
     {
-        $portifolio = $this->repository->find($id);
+        $categoriaPortifolio = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $portifolio,
+                'data' => $categoriaPortifolio,
             ]);
         }
 
-        return view('portifolios.show', compact('portifolio'));
+        return view('categoriaPortifolios.show', compact('categoriaPortifolio'));
     }
 
     /**
@@ -131,32 +131,32 @@ class PortifoliosController extends Controller
      */
     public function edit($id)
     {
-        $portifolio = $this->repository->find($id);
+        $categoriaPortifolio = $this->repository->find($id);
 
-        return view('portifolios.edit', compact('portifolio'));
+        return view('categoriaPortifolios.edit', compact('categoriaPortifolio'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  PortifoliosUpdateRequest $request
-     * @param  string $id
+     * @param  CategoriaPortifolioUpdateRequest $request
+     * @param  string            $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(PortifoliosUpdateRequest $request, $id)
+    public function update(CategoriaPortifolioUpdateRequest $request, $id)
     {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $portifolio = $this->repository->update($request->all(), $id);
+            $categoriaPortifolio = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'Portifolios updated.',
-                'data' => $portifolio->toArray(),
+                'message' => 'CategoriaPortifolio updated.',
+                'data'    => $categoriaPortifolio->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -170,7 +170,7 @@ class PortifoliosController extends Controller
             if ($request->wantsJson()) {
 
                 return response()->json([
-                    'error' => true,
+                    'error'   => true,
                     'message' => $e->getMessageBag()
                 ]);
             }
@@ -194,11 +194,11 @@ class PortifoliosController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'Portifolios deleted.',
+                'message' => 'CategoriaPortifolio deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'Portifolios deleted.');
+        return redirect()->back()->with('message', 'CategoriaPortifolio deleted.');
     }
 }

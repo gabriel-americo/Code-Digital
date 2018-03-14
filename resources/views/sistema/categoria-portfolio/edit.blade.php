@@ -39,10 +39,10 @@
             <div class="col-md-12 ">
                 <div class="portlet light ">
                     <div class="portlet-body form">
-                        {!! Form::open(['route' => 'banner.store', 'method' => 'post', 'files' => true]) !!}
+                        {!! Form::model($banner, ['route' => ['banner.update', $banner->id], 'method' => 'put', 'files' => true]) !!}
                         @include('sistema.banner.form-fields')
                         <div class="form-actions left">
-                            @include('sistema.templates.formulario.submit', ['input' => 'Cadastrar', 'attributes' => ['class' => 'btn green']])
+                            @include('sistema.templates.formulario.submit', ['input' => 'Atualizar', 'attributes' => ['class' => 'btn green']])
                         </div>
                         {!! Form::close() !!}
                     </div>

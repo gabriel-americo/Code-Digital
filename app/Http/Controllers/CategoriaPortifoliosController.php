@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
@@ -17,8 +16,8 @@ use App\Validators\CategoriaPortifolioValidator;
  *
  * @package namespace App\Http\Controllers;
  */
-class CategoriaPortifoliosController extends Controller
-{
+class CategoriaPortifoliosController extends Controller {
+
     /**
      * @var CategoriaPortifolioRepository
      */
@@ -35,10 +34,9 @@ class CategoriaPortifoliosController extends Controller
      * @param CategoriaPortifolioRepository $repository
      * @param CategoriaPortifolioValidator $validator
      */
-    public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator)
-    {
+    public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator) {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -46,19 +44,18 @@ class CategoriaPortifoliosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+    public function index() {
+        
         $categoriaPortifolios = $this->repository->all();
 
-        if (request()->wantsJson()) {
+        return view('categoriaPortifolios.index', [
+            'categoriaPortifolios' => $categoriaPortifolios
+        ]);
+    }
 
-            return response()->json([
-                'data' => $categoriaPortifolios,
-            ]);
-        }
+    public function create() {
 
-        return view('categoriaPortifolios.index', compact('categoriaPortifolios'));
+        return view('sistema.categoria.create');
     }
 
     /**
@@ -70,35 +67,17 @@ class CategoriaPortifoliosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(CategoriaPortifolioCreateRequest $request)
-    {
-        try {
+    public function store(CategoriaPortifolioCreateRequest $request) {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+        $request = $this->service->store($request->all());
+        $banner = $request['success'] ? $request['data'] : null;
 
-            $categoriaPortifolio = $this->repository->create($request->all());
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-            $response = [
-                'message' => 'CategoriaPortifolio created.',
-                'data'    => $categoriaPortifolio->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        return redirect()->route('portifolio.index');
     }
 
     /**
@@ -108,14 +87,13 @@ class CategoriaPortifoliosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $categoriaPortifolio = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $categoriaPortifolio,
+                        'data' => $categoriaPortifolio,
             ]);
         }
 
@@ -129,8 +107,7 @@ class CategoriaPortifoliosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $categoriaPortifolio = $this->repository->find($id);
 
         return view('categoriaPortifolios.edit', compact('categoriaPortifolio'));
@@ -146,8 +123,7 @@ class CategoriaPortifoliosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(CategoriaPortifolioUpdateRequest $request, $id)
-    {
+    public function update(CategoriaPortifolioUpdateRequest $request, $id) {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
@@ -156,7 +132,7 @@ class CategoriaPortifoliosController extends Controller
 
             $response = [
                 'message' => 'CategoriaPortifolio updated.',
-                'data'    => $categoriaPortifolio->toArray(),
+                'data' => $categoriaPortifolio->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -170,15 +146,14 @@ class CategoriaPortifoliosController extends Controller
             if ($request->wantsJson()) {
 
                 return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
+                            'error' => true,
+                            'message' => $e->getMessageBag()
                 ]);
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -187,18 +162,18 @@ class CategoriaPortifoliosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'CategoriaPortifolio deleted.',
-                'deleted' => $deleted,
+                        'message' => 'CategoriaPortifolio deleted.',
+                        'deleted' => $deleted,
             ]);
         }
 
         return redirect()->back()->with('message', 'CategoriaPortifolio deleted.');
     }
+
 }

@@ -19,7 +19,7 @@
     </div>
     <div class="form-group ">
         <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 90px; height: 90px;"> </div>
+            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 158px; height: 150px;"> </div>
             <div>
                 <span class="btn red btn-outline btn-file">
                     <span class="fileinput-new"> Selecione a imagem </span>
@@ -28,10 +28,13 @@
                 <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
             </div>
         </div>
-        <p class="help-block"> Coloque uma imagem JPG, tamanho (29px por 29px) </p>
+        <p class="help-block"> Coloque uma imagem JPG. </p>
     </div>
     <div class="form-group">
         @include('sistema.templates.formulario.select', ['label' => 'Sexo', 'select' => 'sexo', 'data' => ['M' => 'Masculino', 'F' => 'Feminino'], 'attributes' => ['class' => 'form-control']])
+    </div>
+    <div class="form-group">
+        @include('sistema.templates.formulario.select', ['label' => 'Tipo de usuário', 'select' => 'tipo', 'data' => ['1' => 'Administrador', '2' => 'Usuário'], 'attributes' => ['class' => 'form-control']])
     </div>
     <div class="form-group">
         @include('sistema.templates.formulario.password', ['label' => 'Senha', 'input' => 'password', 'attributes' => ['class' => 'form-control']])

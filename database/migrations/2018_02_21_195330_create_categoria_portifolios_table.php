@@ -4,9 +4,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateTrabalhosTable.
+ * Class CreateCategoriaPortifoliosTable.
  */
-class CreateTrabalhosTable extends Migration {
+class CreateCategoriaPortifoliosTable extends Migration {
 
     /**
      * Run the migrations.
@@ -14,10 +14,13 @@ class CreateTrabalhosTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('trabalhos', function(Blueprint $table) {
+        Schema::create('categoria_portifolios', function(Blueprint $table) {
             $table->increments('id');
+            $table->string('nome', 70);
+            $table->string('url', 70);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,7 +30,7 @@ class CreateTrabalhosTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('trabalhos');
+        Schema::drop('categoria_portifolios');
     }
 
 }

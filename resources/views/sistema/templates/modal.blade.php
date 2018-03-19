@@ -9,7 +9,7 @@
                 <p>Você tem certeza que deseja Excluir?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-primary" id="delete-btn">Excluir</button>
+                <button type="button" class="btn btn-sm btn-danger" id="delete-btn">Excluir</button>
                 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Fechar</button>
             </div>
         </div>

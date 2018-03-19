@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a href="" class="btn sbold green"> Adicionar Categoria
+                                        <a href="{{ route('categoria.create') }}" class="btn sbold green"> Adicionar Categoria
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     </div>

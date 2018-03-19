@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\Http\Requests;
-//use Prettus\Validator\Contracts\ValidatorInterface;
-//use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Services\UserService;
+use Illuminate\View;
 
 /**
  * Class UsersController.
@@ -86,7 +84,9 @@ class UsersController extends Controller {
 
         $user = $this->repository->find($id);
 
-        return view('sistema.user.show');
+        return view('sistema.user.show', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -154,19 +154,19 @@ class UsersController extends Controller {
     public function getUserXls() {
 
         $users = $this->repository->all();
-        
+
         $data = array();
 
         foreach ($users as $user) {
             $data[][] = $user['cpf'];
-            $data[][].= $user['nome'];
-            $data[][].= $user['email'];
-            $data[][].= $user['telefone'];
-            $data[][].= $user['nascimento'];
-            $data[][].= $user['sexo'];
-            $data[][].= $user['descricao'];
+            $data[][] .= $user['nome'];
+            $data[][] .= $user['email'];
+            $data[][] .= $user['telefone'];
+            $data[][] .= $user['nascimento'];
+            $data[][] .= $user['sexo'];
+            $data[][] .= $user['descricao'];
         }
-        
+
         \Excel::create('File', function($excel) use($data) {
             $excel->sheet('Sheet', function($sheet) use($data) {
                 //Create rows

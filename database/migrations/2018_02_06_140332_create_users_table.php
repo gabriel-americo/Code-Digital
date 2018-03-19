@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration {
             $table->string('password', 254)->nullable();
 
             //permission
+            $table->integer('tipo')->default(2);
             $table->string('status')->default('ativo');
             $table->string('permission')->default('app.user');
             

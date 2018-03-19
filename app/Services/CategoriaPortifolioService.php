@@ -2,58 +2,49 @@
 
 namespace App\Services;
 
+use App\Repositories\CategoriaPortifolioRepository;
+use App\Validators\CategoriaPortifolioValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
-use App\Repositories\BannersRepository;
-use App\Validators\BannersValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\QueryException;
 use Exception;
 
-class BannerService {
+class UserService {
 
     private $repository;
     private $validator;
 
-    public function __construct(BannersRepository $repository, BannersValidator $validator) {
+    public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator) {
 
         $this->repository = $repository;
         $this->validator = $validator;
+    }
+
+    public function remove_acentos($string, $separator = '-') {
+        $accents_regex = '~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i';
+        $special_cases = array('&' => 'and');
+        $string = mb_strtolower(trim($string), 'UTF-8');
+        $string = str_replace(array_keys($special_cases), array_values($special_cases), $string);
+        $string = preg_replace($accents_regex, '$1', htmlentities($string, ENT_QUOTES, 'UTF-8'));
+        $string = preg_replace("/[^a-z0-9]/u", "$separator", $string);
+        $string = preg_replace("/[$separator]+/u", "$separator", $string);
+        return $string;
     }
 
     public function store($data) {
 
         try {
 
-            $file = $data['imagem'];
-            $destinationPath = 'img/background';
-
-            //Move Uploaded File
-            $file->move($destinationPath, $file->getClientOriginalName());
-            $data['imagem'] = $file->getClientOriginalName();
-
-            $data['status'] = (isset($data['status']) == '1' ? '1' : '0');
-
-            /* Data inicio */
-            if (isset($data['data_inicio'])) {
-                $inicio = explode('/', $data['data_inicio']);
-                $inicio = $inicio[2] . '-' . $inicio[1] . '-' . $inicio[0];
-                $data['data_inicio'] = $inicio;
-            }
-
-            /* Data fim */
-            if (isset($data['data_fim'])) {
-                $fim = explode('/', $data['data_fim']);
-                $fim = $fim[2] . '-' . $fim[1] . '-' . $fim[0];
-                $data['data_fim'] = $fim;
-            }
+            /* Url */
+            $data['url'] = remove_acentos($data['nome']);
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
-            $banner = $this->repository->create($data);
+            $categotia_portifolio = $this->repository->create($data);
 
             return [
                 'success' => true,
-                'message' => 'Banner cadastrado',
-                'data' => $banner,
+                'message' => 'Categoria cadastrada',
+                'data' => $categotia_portifolio,
             ];
         } catch (Exception $e) {
 
@@ -70,36 +61,15 @@ class BannerService {
 
         try {
 
-            if (!empty($data['imagem'])) {
-
-                /* Imagem */
-                $file = $data['imagem'];
-                $destinationPath = 'img/background';
-
-                /* Move Uploaded File */
-                $file->move($destinationPath, $file->getClientOriginalName());
-                $data['imagem'] = $file->getClientOriginalName();
-            }
-
-            /* Data inicio */
-            $inicio = explode('/', $data['data_inicio']);
-            $inicio = $inicio[2] . '-' . $inicio[1] . '-' . $inicio[0];
-            $data['data_inicio'] = $inicio;
-
-            /* Data fim */
-            $fim = explode('/', $data['data_fim']);
-            $fim = $fim[2] . '-' . $fim[1] . '-' . $fim[0];
-            $data['data_fim'] = $fim;
-
-            $data['status'] = (isset($data['status']) == '1' ? '1' : '0');
-
+            $data['url'] = remove_acentos($data['nome']);
+            
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
-            $banner = $this->repository->update($data, $id);
+            $categotia_portifolio = $this->repository->update($data, $id);
 
             return [
                 'success' => true,
-                'message' => 'Banner atualizado',
-                'data' => $banner,
+                'message' => 'Categoria atualizada',
+                'data' => $categotia_portifolio,
             ];
         } catch (Exception $e) {
 
@@ -112,15 +82,15 @@ class BannerService {
         }
     }
 
-    public function destroy($banner_id) {
+    public function destroy($categoria_id) {
 
         try {
 
-            $this->repository->delete($banner_id);
+            $this->repository->delete($categoria_id);
 
             return [
                 'success' => true,
-                'message' => 'Banner removido',
+                'message' => 'Categoria removida',
                 'data' => null,
             ];
         } catch (Exception $e) {

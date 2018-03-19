@@ -31,7 +31,7 @@
                         </div>
 
                         @if(session('success'))
-                            <h4>{{ session('success')['message'] }}</h4>
+                            <h4 class="bold">{{ session('success')['message'] }}</h4>
                         @endif
 
                         <div class="portlet-body">
@@ -55,7 +55,7 @@
                                                  style="width: 100%; height: 200px;">
                                             <div class="caption">
                                                 <h3>{{ $banner->nome }}</h3>
-                                                <p>{{ $banner->formatted_ativo }} </p>
+                                                <p>{{ $banner->formatted_status }} </p>
                                                 @if(!empty($banner->formatted_data_inicio) && !empty($banner->formatted_data_fim))
                                                     <p>Data inicio: {{ $banner->formatted_data_inicio }} </p>
                                                     <p>Data fim: {{ $banner->formatted_data_fim }} </p>

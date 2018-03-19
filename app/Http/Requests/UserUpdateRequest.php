@@ -28,6 +28,19 @@ class UserUpdateRequest extends FormRequest
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|unique:users,email',
+            'password' => 'sometimes'
+        ];
+    }
+    
+    public function messages() {
+        // mensagens de erro personalizadas!
+        return [
+            'cpf.required' => 'O campo :attribute é obrigatório',
+            'nome.required' => 'O campo :attribute é obrigatório',
+            'nome.min' => 'O campo :attribute tem que ter mais do que 3 caracteres',
+            'email.required' => 'O campo :attribute é obrigatório',
+            'email.email' => 'O campo :attribute tem que ser um email',
+            'email.unique:users' => 'O campo :attribute já existe',
         ];
     }
 }

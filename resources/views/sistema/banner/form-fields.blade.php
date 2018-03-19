@@ -4,7 +4,7 @@
     </div>
     <div class="form-group ">
         <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 160px; height: 140px;"> </div>
             <div>
                 <span class="btn red btn-outline btn-file">
                     <span class="fileinput-new"> Selecione a imagem </span>

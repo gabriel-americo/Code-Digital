@@ -2,7 +2,7 @@
     <div class="page-sidebar navbar-collapse collapse">
 
         <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-
+            @if(Auth::user()->tipo == 1)
             <li class="nav-item start {{ request()->is('sistema/user', 'sistema/user/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fas fa-user"></i>
@@ -10,14 +10,14 @@
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item {{ request()->is('sistema/user/create') ? 'start active open' : '' }}">
+                    <li class="nav-item start {{ request()->is('sistema/user/create') ? 'active open' : '' }}">
                         <a href="{{ route('user.create') }}" class="nav-link ">
                             <i class="fas fa-user-plus"></i>
                             <span class="title">Adicionar Usuários</span>
                             <span class="selected"></span>
                         </a>
                     </li>
-                    <li class="nav-item {{ request()->is('sistema/user') ? 'start active open' : '' }}">
+                    <li class="nav-item start {{ request()->is('sistema/user') ? 'active open' : '' }}">
                         <a href="{{ route('user.index') }}" class="nav-link ">
                             <i class="fas fa-user"></i>
                             <span class="title">Listar Usuários</span>
@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </li>
-            
+            @endif
             <li class="nav-item start {{ request()->is('sistema/banner', 'sistema/banner/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fas fa-image"></i>

@@ -30,6 +30,8 @@ Route::group(['middleware' => 'login'], function() {
     Route::resource('sistema/user', 'UsersController');
     Route::resource('sistema/banner', 'BannersController');
     Route::resource('sistema/portifolio', 'PortifoliosController');
+    
+    Route::get('sistema/categoria', ['as' => 'categoria.create', 'uses' => 'CategoriaPortifoliosController@create']);
 });
 
 /* Website */

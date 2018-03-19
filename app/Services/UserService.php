@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
-use Prettus\Validator\Contracts\ValidatorInterface;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
+use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\QueryException;
 use Exception;
@@ -25,12 +25,14 @@ class UserService {
         try {
 
             /* Imagem */
-            $file = $data['imagem'];
-            $destinationPath = 'img_sistema/perfil';
+            if (!empty($data['imagem'])) {
+                $file = $data['imagem'];
+                $destinationPath = 'img_sistema/perfil';
 
-            /* Move Uploaded File */
-            $file->move($destinationPath, $file->getClientOriginalName());
-            $data['imagem'] = $file->getClientOriginalName();
+                /* Move Uploaded File */
+                $file->move($destinationPath, $file->getClientOriginalName());
+                $data['imagem'] = $file->getClientOriginalName();
+            }
 
             /* Data */
             $birth = explode('/', $data['nascimento']);
@@ -77,12 +79,14 @@ class UserService {
         try {
 
             /* Imagem */
-            $file = $data['imagem'];
-            $destinationPath = 'img_sistema/perfil';
+            if (!empty($data['imagem'])) {
+                $file = $data['imagem'];
+                $destinationPath = 'img_sistema/perfil';
 
-            /* Move Uploaded File */
-            $file->move($destinationPath, $file->getClientOriginalName());
-            $data['imagem'] = $file->getClientOriginalName();
+                /* Move Uploaded File */
+                $file->move($destinationPath, $file->getClientOriginalName());
+                $data['imagem'] = $file->getClientOriginalName();
+            }
 
             /* Data */
             $birth = explode('/', $data['nascimento']);
@@ -102,15 +106,19 @@ class UserService {
             $data['telefone'] = $phone;
 
             /* Password */
-            $pass = bcrypt($data['password']);
-            $data['password'] = $pass;
+            if (!empty($data['password'])) {
+                $pass = bcrypt($data['password']);
+                $data['password'] = $pass;
+            } else {
+                unset($data['password']);
+            }
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $usuario = $this->repository->update($data, $id);
 
             return [
                 'success' => true,
-                'message' => 'Usúario atualizado',
+                'message' => 'Usuário atualizado',
                 'data' => $usuario,
             ];
         } catch (Exception $e) {
@@ -132,7 +140,7 @@ class UserService {
 
             return [
                 'success' => true,
-                'message' => 'Usúario removido',
+                'message' => 'Usuário removido',
                 'data' => null,
             ];
         } catch (Exception $e) {

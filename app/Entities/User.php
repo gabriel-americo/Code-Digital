@@ -24,7 +24,7 @@ class User extends Authenticatable {
      *
      * @var array
      */
-    protected $fillable = ['cpf', 'nome', 'telefone', 'nascimento', 'sexo', 'descricao', 'email', 'password', 'status', 'permission', 'imagem'];
+    protected $fillable = ['cpf', 'nome', 'telefone', 'nascimento', 'sexo', 'descricao', 'email', 'password', 'status', 'permission', 'imagem', 'tipo'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -77,6 +77,19 @@ class User extends Authenticatable {
         }
 
         return $gender;
+    }
+    
+    public function getFormattedTipoAttribute() {
+
+        $tipo = $this->attributes['tipo'];
+
+        if ($tipo == '1') {
+            $tipo = "Administrador";
+        } else {
+            $tipo = "Usuário";
+        }
+
+        return $tipo;
     }
 
 }

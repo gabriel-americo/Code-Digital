@@ -21,6 +21,7 @@
         </div>
 
         <div class="row">
+            @if(Auth::user()->tipo == 1)
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat2 ">
                     <div class="display">
@@ -36,6 +37,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat2 ">

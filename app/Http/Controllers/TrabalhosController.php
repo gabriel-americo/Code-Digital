@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
@@ -11,23 +10,19 @@ use App\Http\Requests\TrabalhosCreateRequest;
 use App\Http\Requests\TrabalhosUpdateRequest;
 use App\Repositories\TrabalhosRepository;
 use App\Validators\TrabalhosValidator;
+use App\Services\TrabalhoService;
+use Auth;
 
 /**
  * Class TrabalhosController.
  *
  * @package namespace App\Http\Controllers;
  */
-class TrabalhosController extends Controller
-{
-    /**
-     * @var TrabalhosRepository
-     */
-    protected $repository;
+class TrabalhosController extends Controller {
 
-    /**
-     * @var TrabalhosValidator
-     */
+    protected $repository;
     protected $validator;
+    protected $service;
 
     /**
      * TrabalhosController constructor.
@@ -35,10 +30,11 @@ class TrabalhosController extends Controller
      * @param TrabalhosRepository $repository
      * @param TrabalhosValidator $validator
      */
-    public function __construct(TrabalhosRepository $repository, TrabalhosValidator $validator)
-    {
+    public function __construct(TrabalhosRepository $repository, TrabalhosValidator $validator, TrabalhoService $service) {
+        
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
+        $this->service = $service;
     }
 
     /**
@@ -46,19 +42,20 @@ class TrabalhosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $trabalhos = $this->repository->all();
+    public function index() {
+        
+        $id_user = Auth::user()->id;
+        
+        $trabalhos = $this->repository->find($id_user);
 
-        if (request()->wantsJson()) {
+        return view('sistema.trabalho.index', [
+            'trabalhos' => $trabalhos
+        ]);
+    }
+    
+    public function create() {
 
-            return response()->json([
-                'data' => $trabalhos,
-            ]);
-        }
-
-        return view('trabalhos.index', compact('trabalhos'));
+        return view('sistema.trabalho.create');
     }
 
     /**
@@ -70,35 +67,17 @@ class TrabalhosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(TrabalhosCreateRequest $request)
-    {
-        try {
+    public function store(TrabalhosCreateRequest $request) {
+        
+        $request = $this->service->store($request->all());
+        $trabalhos = $request['success'] ? $request['data'] : null;
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-            $trabalho = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Trabalhos created.',
-                'data'    => $trabalho->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        return redirect()->route('trabalho.index');
     }
 
     /**
@@ -108,18 +87,11 @@ class TrabalhosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
+        
         $trabalho = $this->repository->find($id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $trabalho,
-            ]);
-        }
-
-        return view('trabalhos.show', compact('trabalho'));
+        return view('trabalhos.show');
     }
 
     /**
@@ -129,11 +101,13 @@ class TrabalhosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
+        
         $trabalho = $this->repository->find($id);
 
-        return view('trabalhos.edit', compact('trabalho'));
+        return view('sistema.trabalho.edit', [
+            'trabalho' => $trabalho,
+        ]);
     }
 
     /**
@@ -146,39 +120,18 @@ class TrabalhosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(TrabalhosUpdateRequest $request, $id)
-    {
-        try {
+    public function update(TrabalhosUpdateRequest $request, $id) {
+        
+        $request = $this->service->update($request->all(), $id);
+        $trabalhos = $request['success'] ? $request['data'] : null;
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-            $trabalho = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'Trabalhos updated.',
-                'data'    => $trabalho->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        return redirect()->route('trablhos.index');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -187,18 +140,16 @@ class TrabalhosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $deleted = $this->repository->delete($id);
+    public function destroy($id) {
+        
+        $request = $this->service->destroy($id);
 
-        if (request()->wantsJson()) {
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-            return response()->json([
-                'message' => 'Trabalhos deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'Trabalhos deleted.');
+        return redirect()->route('trabalhos.index');
     }
+
 }

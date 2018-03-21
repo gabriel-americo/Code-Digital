@@ -62,7 +62,7 @@ class UserService {
         try {
 
             $data['url'] = remove_acentos($data['nome']);
-            
+
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $categotia_portifolio = $this->repository->update($data, $id);
 

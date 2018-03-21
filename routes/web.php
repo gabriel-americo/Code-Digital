@@ -11,6 +11,7 @@
   |
  */
 
+
 /* Dashboard */
 
 /* Routes to user auth */
@@ -21,6 +22,7 @@ Route::get('/logout', ['as' => 'logout', 'uses' => 'DashboardController@logout']
 /* Group middleware logged */
 Route::group(['middleware' => 'login'], function() {
     
+    /* Route index dashborad */
     Route::get('/sistema', ['as' => 'sistema.index', 'uses' => 'DashboardController@index']);
     
     /* Route to export file in xls (Excel) */
@@ -29,6 +31,7 @@ Route::group(['middleware' => 'login'], function() {
     /* Routes crud in the dashboard */
     Route::resource('sistema/user', 'UsersController');
     Route::resource('sistema/banner', 'BannersController');
+    Route::resource('sistema/trabalho', 'TrabalhosController');
     Route::resource('sistema/portifolio', 'PortifoliosController');
     
     Route::get('sistema/categoria', ['as' => 'categoria.create', 'uses' => 'CategoriaPortifoliosController@create']);

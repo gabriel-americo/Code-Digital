@@ -24,6 +24,7 @@ class BannerService {
 
         try {
 
+            /* Imagem */
             $file = $data['imagem'];
             $destinationPath = 'img/background';
 
@@ -82,14 +83,18 @@ class BannerService {
             }
 
             /* Data inicio */
-            $inicio = explode('/', $data['data_inicio']);
-            $inicio = $inicio[2] . '-' . $inicio[1] . '-' . $inicio[0];
-            $data['data_inicio'] = $inicio;
+            if (isset($data['data_inicio'])) {
+                $inicio = explode('/', $data['data_inicio']);
+                $inicio = $inicio[2] . '-' . $inicio[1] . '-' . $inicio[0];
+                $data['data_inicio'] = $inicio;
+            }
 
             /* Data fim */
-            $fim = explode('/', $data['data_fim']);
-            $fim = $fim[2] . '-' . $fim[1] . '-' . $fim[0];
-            $data['data_fim'] = $fim;
+            if (isset($data['data_fim'])) {
+                $fim = explode('/', $data['data_fim']);
+                $fim = $fim[2] . '-' . $fim[1] . '-' . $fim[0];
+                $data['data_fim'] = $fim;
+            }
 
             $data['status'] = (isset($data['status']) == '1' ? '1' : '0');
 

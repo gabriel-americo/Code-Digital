@@ -17,7 +17,7 @@ class CreatePortifoliosTable extends Migration {
         Schema::create('portifolios', function(Blueprint $table) {
             $table->increments('id');
             
-            $table->integer('categoria_portifolio_id');
+            $table->unsignedInteger('categoria_portifolio_id');
             $table->string('nome', 70);
             $table->string('imagem', 250);
 

@@ -11,7 +11,6 @@
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
@@ -129,6 +128,7 @@
         <script src="/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
         <!-- BEGIN CUSTOM SCRIPTS -->
         <script src="/assets/pages/scripts/custom.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     </body>
 </html>

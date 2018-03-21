@@ -5,21 +5,19 @@
             @if(Auth::user()->tipo == 1)
             <li class="nav-item start {{ request()->is('sistema/user', 'sistema/user/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="fas fa-user"></i>
+                    <i class="fa-2x fas fa-user"></i>
                     <span class="title">Usuários</span>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item start {{ request()->is('sistema/user/create') ? 'active open' : '' }}">
                         <a href="{{ route('user.create') }}" class="nav-link ">
-                            <i class="fas fa-user-plus"></i>
                             <span class="title">Adicionar Usuários</span>
                             <span class="selected"></span>
                         </a>
                     </li>
                     <li class="nav-item start {{ request()->is('sistema/user') ? 'active open' : '' }}">
                         <a href="{{ route('user.index') }}" class="nav-link ">
-                            <i class="fas fa-user"></i>
                             <span class="title">Listar Usuários</span>
                             <span class="selected"></span>
                         </a>
@@ -29,21 +27,19 @@
             @endif
             <li class="nav-item start {{ request()->is('sistema/banner', 'sistema/banner/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="fas fa-image"></i>
+                    <i class="fa-2x fas fa-image"></i>
                     <span class="title">Banner</span>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item {{ request()->is('sistema/banner/create') ? 'start active open' : '' }}">
                         <a href="{{ route('banner.create') }}" class="nav-link ">
-                            <i class="fas fa-images"></i>
                             <span class="title">Adicionar Banner</span>
                             <span class="selected"></span>
                         </a>
                     </li>
                     <li class="nav-item {{ request()->is('sistema/banner') ? 'start active open' : '' }}">
                         <a href="{{ route('banner.index') }}" class="nav-link ">
-                            <i class="fas fa-image"></i>
                             <span class="title">Listar Banner</span>
                             <span class="selected"></span>
                         </a>
@@ -51,34 +47,32 @@
                 </ul>
             </li>
             
-            <!--<li class="nav-item {{ request()->is('sistema/trabalho', 'sistema/trabalho/*') ? 'start active open' : '' }}">
+            <li class="nav-item {{ request()->is('sistema/trabalho', 'sistema/trabalho/*') ? 'start active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="fas fa-image"></i>
+                    <i class="fa-2x fas fa-briefcase"></i>
                     <span class="title">Trabalhos</span>
                     <span class="selected"></span>
                     <span class="arrow open"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item {{ request()->is('sistema/trabalho/create') ? 'start active open' : '' }}">
-                        <a href="{{ route('banner.create') }}" class="nav-link ">
-                            <i class="fas fa-images"></i>
+                        <a href="{{ route('trabalho.create') }}" class="nav-link ">
                             <span class="title">Adicionar Trabalhos</span>
                             <span class="selected"></span>
                         </a>
                     </li>
                     <li class="nav-item {{ request()->is('sistema/trabalho') ? 'start active open' : '' }}">
-                        <a href="{{ route('banner.index') }}" class="nav-link ">
-                            <i class="fas fa-image"></i>
+                        <a href="{{ route('trabalho.index') }}" class="nav-link ">
                             <span class="title">Listar Trabalhos</span>
                             <span class="selected"></span>
                         </a>
                     </li>
                 </ul>
-            </li>-->
+            </li>
             
             <li class="nav-item start {{ request()->is('sistema/portifolio', 'sistema/portifolio/*') ? 'active open' : '' }}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="far fa-images"></i>
+                    <i class="fa-2x far fa-images"></i>
                     <span class="title">Portfólio</span>
                     <span class="selected"></span>
                     <span class="arrow open"></span>
@@ -86,14 +80,12 @@
                 <ul class="sub-menu">
                     <li class="nav-item start {{ request()->is('sistema/portifolio/create') ? 'active open' : '' }}">
                         <a href="{{ route('portifolio.create') }}" class="nav-link ">
-                            <i class="fas fa-images"></i>
                             <span class="title">Adicionar Portfólio</span>
                             <span class="selected"></span>
                         </a>
                     </li>
                     <li class="nav-item start {{ request()->is('sistema/portifolio') ? 'active open' : '' }}">
                         <a href="{{ route('portifolio.index') }}" class="nav-link ">
-                            <i class="fas fa-image"></i>
                             <span class="title">Listar Portfólio</span>
                             <span class="selected"></span>
                         </a>

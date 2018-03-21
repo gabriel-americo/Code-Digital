@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
                     <div class="login-content">
-                        <h1>Sistema Login</h1>
+                        <h1>Login</h1>
 
                         {!! Form::open(['route' => 'sistema.login', 'method' => 'post', 'class' => 'login-form']) !!}
                         

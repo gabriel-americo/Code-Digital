@@ -32,7 +32,7 @@
                             <small>USUÁRIOS</small>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-user"></i>
+                            <i class="fa-2x fas fa-user"></i>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             <small>BANNERS</small>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-image"></i>
+                            <i class="fa-2x fas fa-image"></i>
                         </div>
                     </div>
                 </div>

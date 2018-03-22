@@ -44,9 +44,9 @@ class TrabalhosController extends Controller {
      */
     public function index() {
         
-        $id_user = Auth::user()->id;
+        $user_id = Auth::user()->id;
         
-        $trabalhos = $this->repository->find($id_user);
+        $trabalhos = $this->repository->findWhere(['user_id' => $user_id]);
 
         return view('sistema.trabalho.index', [
             'trabalhos' => $trabalhos

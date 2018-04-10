@@ -6,7 +6,7 @@
     <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
-        <h1 class="page-title"> Banner </h1>
+        <h1 class="page-title"> Portfolios </h1>
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
@@ -15,7 +15,7 @@
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <span>Banners</span>
+                    <span>Portfolios</span>
                 </li>
             </ul>
         </div>
@@ -39,8 +39,8 @@
             <div class="col-md-12 ">
                 <div class="portlet light ">
                     <div class="portlet-body form">
-                        {!! Form::open(['route' => 'categoria-portfolio.store', 'method' => 'post']) !!}
-                        @include('sistema.categoria-portfolio.form-fields')
+                        {!! Form::open(['route' => 'portifolio.store', 'method' => 'post']) !!}
+                        @include('sistema.portfolio.form-fields')
                         <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Cadastrar', 'attributes' => ['class' => 'btn green']])
                         </div>

@@ -31,10 +31,15 @@ Route::group(['middleware' => 'login'], function() {
     /* Routes crud in the dashboard */
     Route::resource('sistema/user', 'UsersController');
     Route::resource('sistema/banner', 'BannersController');
+    Route::resource('sistema/destaque', 'DestaquesController');
+    Route::resource('sistema/processo', 'ProcessosController');
     Route::resource('sistema/trabalho', 'TrabalhosController');
     Route::resource('sistema/portifolio', 'PortifoliosController');
-    
-    Route::get('sistema/categoria', ['as' => 'categoria.create', 'uses' => 'CategoriaPortifoliosController@create']);
+    Route::resource('sistema/categoria-portfolio', 'CategoriaPortifoliosController');
+
+    Route::get('sistema/site', ['as' => 'site.index', 'uses' => 'SitesController@index']);
+
+    Route::get('sistema/contato', ['as' => 'contato.index', 'uses' => 'ContatosController@index']);
 });
 
 /* Website */

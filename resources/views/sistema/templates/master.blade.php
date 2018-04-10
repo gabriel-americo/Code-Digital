@@ -18,9 +18,9 @@
         <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
@@ -28,6 +28,7 @@
         <link href="/assets/layouts/layout2/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/layouts/layout2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="/assets/layouts/layout2/css/custom.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> 
     </head>
@@ -103,7 +104,6 @@
         <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="/assets/global/plugins/moment.min.js" type="text/javascript"></script>
@@ -117,11 +117,13 @@
         <script src="/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="/assets/pages/scripts/components-editors.min.js" type="text/javascript"></script>
         <script src="/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
         <script src="/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
         <!-- BEGIN THEME LAYOUT SCRIPTS -->

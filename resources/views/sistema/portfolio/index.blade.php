@@ -31,7 +31,7 @@
                     </div>
 
                     @if(session('success'))
-                    <h4>{{ session('success')['message'] }}</h4>
+                    <h4 class="bold">{{ session('success')['message'] }}</h4>
                     @endif
 
                     <div class="portlet-body">
@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a href="{{ route('categoria.create') }}" class="btn sbold green"> Adicionar Categoria
+                                        <a href="{{ route('categoria-portfolio.create') }}" class="btn sbold green"> Adicionar Categoria
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     </div>
@@ -47,12 +47,13 @@
                             </div>
                         </div>
 
+                        @foreach($categorias as $categoria)
                         <div class="row">
                             <div class="portlet light ">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="icon-social-dribbble font-dark hide"></i>
-                                        <span class="caption-subject font-dark bold uppercase">Categoria 1</span>
+                                        <span class="caption-subject font-dark bold uppercase">{{ $categoria->nome }}</span>
                                     </div>
                                     <div class="actions">
                                         <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
@@ -64,11 +65,12 @@
                                     </div>
                                 </div>
 
+
                                 <div class="table-toolbar">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="btn-group">
-                                                <a href="" class="btn sbold green"> Adicionar
+                                                <a href="{{ route('portifolio.create') }}" class="btn sbold green"> Adicionar
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </div>
@@ -76,6 +78,7 @@
                                     </div>
                                 </div>
 
+                                @foreach($portfolios as $portifolio)
                                 <div class="col-sm-4 col-md-2">
                                     <div class="thumbnail">
                                         <img src="/img/background/wallhaven-107981.jpg" alt=""
@@ -93,8 +96,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
+                        @endforeach
 
                     </div>
                 </div>

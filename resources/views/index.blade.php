@@ -77,7 +77,7 @@
             <!-- /.container -->
         </nav>
 
-        <header style="background-image: url('/img/background/img1.jpg');">
+        <header style="background-image: url('/img/background/{{ $banner->imagem }}');">
             <div class="intro-content">
                 <img src="/img/logo/logo.png" class="img-responsive img-centered" alt="">
             </div>
@@ -104,7 +104,7 @@
                     <div class="col-md-4 col-sm-4 wow fadeIn" data-wow-delay=".4s">
                         <div class="about-content">
                             <i class="fa fa-edit fa-4x"></i>
-                            <h3>Easy to Edit</h3>
+                            <h3>Fácil edição</h3>
                             <p>Vitality is built using Bootstrap 3, and is easy to edit and customize. LESS files are included as well for deeper customization.</p>
                         </div>
                     </div>

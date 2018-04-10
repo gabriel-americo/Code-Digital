@@ -10,7 +10,7 @@
                     <span class="fileinput-new"> Selecione a imagem </span>
                     <span class="fileinput-exists"> Mudar </span>
                     <input type="file" name="imagem"> </span>
-                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Remover </a>
             </div>
         </div>
         <p class="help-block"> Coloque uma imagem JPG. </p>

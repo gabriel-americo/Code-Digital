@@ -21,5 +21,10 @@ class Portifolios extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+    
+     public function portifolio() {
+        
+    	return $this->belongsTo(CategoriaPortifolio::class);
+    }
 
 }

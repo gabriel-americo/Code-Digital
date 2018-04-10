@@ -13,7 +13,7 @@ class PortifoliosUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class PortifoliosUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required',
+            'categoria_portifolio_id' => 'required'
+        ];
+    }
+    
+    public function messages()
+    {
+        // mensagens de erro personalizadas!
+        return [
+            'nome.required' => 'O campo :attribute é obrigatório',
+            'categoria_portifolio_id.required' => 'O campo :attribute é obrigatório'
         ];
     }
 }

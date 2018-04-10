@@ -6,7 +6,7 @@
     <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
-        <h1 class="page-title"> Banner </h1>
+        <h1 class="page-title"> Categoria Portifolio </h1>
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
@@ -15,7 +15,7 @@
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <span>Banners</span>
+                    <span>Categoria Portifolio</span>
                 </li>
             </ul>
         </div>

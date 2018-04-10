@@ -9,7 +9,7 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\QueryException;
 use Exception;
 
-class UserService {
+class CategoriaPortifolioService {
 
     private $repository;
     private $validator;
@@ -19,7 +19,7 @@ class UserService {
         $this->repository = $repository;
         $this->validator = $validator;
     }
-
+    
     public function remove_acentos($string, $separator = '-') {
         $accents_regex = '~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i';
         $special_cases = array('&' => 'and');
@@ -36,7 +36,7 @@ class UserService {
         try {
 
             /* Url */
-            $data['url'] = remove_acentos($data['nome']);
+            $data['url'] = $this->remove_acentos($data['nome']);
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
             $categotia_portifolio = $this->repository->create($data);
@@ -61,7 +61,7 @@ class UserService {
 
         try {
 
-            $data['url'] = remove_acentos($data['nome']);
+            $data['url'] = $this->remove_acentos($data['nome']);
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $categotia_portifolio = $this->repository->update($data, $id);

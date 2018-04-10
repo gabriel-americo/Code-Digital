@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\CategoriaPortifolioCreateRequest;
 use App\Http\Requests\CategoriaPortifolioUpdateRequest;
 use App\Repositories\CategoriaPortifolioRepository;
 use App\Validators\CategoriaPortifolioValidator;
+use App\Services\CategoriaPortifolioService;
 
 /**
  * Class CategoriaPortifoliosController.
@@ -34,9 +33,10 @@ class CategoriaPortifoliosController extends Controller {
      * @param CategoriaPortifolioRepository $repository
      * @param CategoriaPortifolioValidator $validator
      */
-    public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator) {
+    public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator, CategoriaPortifolioService $service) {
         $this->repository = $repository;
         $this->validator = $validator;
+        $this->service = $service;
     }
 
     /**
@@ -55,7 +55,7 @@ class CategoriaPortifoliosController extends Controller {
 
     public function create() {
 
-        return view('sistema.categoria.create');
+        return view('sistema.categoria-portfolio.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoriaPortifoliosController extends Controller {
     public function store(CategoriaPortifolioCreateRequest $request) {
 
         $request = $this->service->store($request->all());
-        $banner = $request['success'] ? $request['data'] : null;
+        $categoria_portifolio = $request['success'] ? $request['data'] : null;
 
         session()->flash('success', [
             'success' => $request['success'],

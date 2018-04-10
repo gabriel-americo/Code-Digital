@@ -9,7 +9,7 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\QueryException;
 use Exception;
 
-class BannerService {
+class PortifolioService {
 
     private $repository;
     private $validator;

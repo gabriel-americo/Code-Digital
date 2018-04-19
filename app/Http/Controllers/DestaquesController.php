@@ -14,14 +14,7 @@ use App\Validators\DestaqueValidator;
  */
 class DestaquesController extends Controller {
 
-    /**
-     * @var DestaqueRepository
-     */
     protected $repository;
-
-    /**
-     * @var DestaqueValidator
-     */
     protected $validator;
 
     /**

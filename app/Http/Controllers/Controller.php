@@ -10,9 +10,7 @@ use App\Entities\Banners;
 
 class Controller extends BaseController {
 
-    use AuthorizesRequests,
-        DispatchesJobs,
-        ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function homepage() {
 

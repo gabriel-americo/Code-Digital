@@ -2,13 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\SiteCreateRequest;
-use App\Http\Requests\SiteUpdateRequest;
 use App\Repositories\SiteRepository;
 use App\Validators\SiteValidator;
 
@@ -17,8 +10,8 @@ use App\Validators\SiteValidator;
  *
  * @package namespace App\Http\Controllers;
  */
-class SitesController extends Controller
-{
+class SitesController extends Controller {
+
     /**
      * @var SiteRepository
      */
@@ -35,10 +28,9 @@ class SitesController extends Controller
      * @param SiteRepository $repository
      * @param SiteValidator $validator
      */
-    public function __construct(SiteRepository $repository, SiteValidator $validator)
-    {
+    public function __construct(SiteRepository $repository, SiteValidator $validator) {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**

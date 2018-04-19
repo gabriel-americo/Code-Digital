@@ -11,8 +11,8 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Entities;
  */
-class CategoriaPortifolio extends Model implements Transformable
-{
+class CategoriaPortifolio extends Model implements Transformable {
+
     use TransformableTrait;
 
     /**

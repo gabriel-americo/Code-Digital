@@ -13,36 +13,32 @@ use App\Validators\BannersValidator;
  *
  * @package namespace App\Repositories;
  */
-class BannersRepositoryEloquent extends BaseRepository implements BannersRepository
-{
+class BannersRepositoryEloquent extends BaseRepository implements BannersRepository {
+
     /**
      * Specify Model class name
      *
      * @return string
      */
-    public function model()
-    {
+    public function model() {
         return Banners::class;
     }
 
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
-    public function validator()
-    {
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
+    public function validator() {
 
         return BannersValidator::class;
     }
 
-
     /**
      * Boot up the repository, pushing criteria
      */
-    public function boot()
-    {
+    public function boot() {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

@@ -98,13 +98,13 @@ class BannersController extends Controller {
 
         $banner = $this->repository->find($id);
 
-        if(!empty($banner->data_inicio)) {
+        if (!empty($banner->data_inicio)) {
             $inicio = explode('-', $banner->data_inicio);
             $inicio = $inicio[2] . '/' . $inicio[1] . '/' . $inicio[0];
             $banner->data_inicio = $inicio;
         }
 
-        if(!empty($banner->data_fim)) {
+        if (!empty($banner->data_fim)) {
             $fim = explode('-', $banner->data_fim);
             $fim = $fim[2] . '/' . $fim[1] . '/' . $fim[0];
             $banner->data_fim = $fim;

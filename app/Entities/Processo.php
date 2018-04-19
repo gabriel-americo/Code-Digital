@@ -11,8 +11,8 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Entities;
  */
-class Processo extends Model implements Transformable
-{
+class Processo extends Model implements Transformable {
+
     use TransformableTrait;
 
     /**

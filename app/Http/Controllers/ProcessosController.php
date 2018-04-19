@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\ProcessoCreateRequest;
@@ -17,16 +14,9 @@ use App\Validators\ProcessoValidator;
  *
  * @package namespace App\Http\Controllers;
  */
-class ProcessosController extends Controller
-{
-    /**
-     * @var ProcessoRepository
-     */
-    protected $repository;
+class ProcessosController extends Controller {
 
-    /**
-     * @var ProcessoValidator
-     */
+    protected $repository;
     protected $validator;
 
     /**
@@ -35,10 +25,9 @@ class ProcessosController extends Controller
      * @param ProcessoRepository $repository
      * @param ProcessoValidator $validator
      */
-    public function __construct(ProcessoRepository $repository, ProcessoValidator $validator)
-    {
+    public function __construct(ProcessoRepository $repository, ProcessoValidator $validator) {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -46,15 +35,14 @@ class ProcessosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $processos = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $processos,
+                        'data' => $processos,
             ]);
         }
 
@@ -70,8 +58,7 @@ class ProcessosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(ProcessoCreateRequest $request)
-    {
+    public function store(ProcessoCreateRequest $request) {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
@@ -80,7 +67,7 @@ class ProcessosController extends Controller
 
             $response = [
                 'message' => 'Processo created.',
-                'data'    => $processo->toArray(),
+                'data' => $processo->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -92,8 +79,8 @@ class ProcessosController extends Controller
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
+                            'error' => true,
+                            'message' => $e->getMessageBag()
                 ]);
             }
 
@@ -108,14 +95,13 @@ class ProcessosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $processo = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $processo,
+                        'data' => $processo,
             ]);
         }
 
@@ -129,8 +115,7 @@ class ProcessosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $processo = $this->repository->find($id);
 
         return view('processos.edit', compact('processo'));
@@ -146,8 +131,7 @@ class ProcessosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(ProcessoUpdateRequest $request, $id)
-    {
+    public function update(ProcessoUpdateRequest $request, $id) {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
@@ -156,7 +140,7 @@ class ProcessosController extends Controller
 
             $response = [
                 'message' => 'Processo updated.',
-                'data'    => $processo->toArray(),
+                'data' => $processo->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -170,15 +154,14 @@ class ProcessosController extends Controller
             if ($request->wantsJson()) {
 
                 return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
+                            'error' => true,
+                            'message' => $e->getMessageBag()
                 ]);
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -187,18 +170,18 @@ class ProcessosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'Processo deleted.',
-                'deleted' => $deleted,
+                        'message' => 'Processo deleted.',
+                        'deleted' => $deleted,
             ]);
         }
 
         return redirect()->back()->with('message', 'Processo deleted.');
     }
+
 }

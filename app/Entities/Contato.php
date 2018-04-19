@@ -11,8 +11,8 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Entities;
  */
-class Contato extends Model implements Transformable
-{
+class Contato extends Model implements Transformable {
+
     use TransformableTrait;
 
     /**
@@ -20,6 +20,6 @@ class Contato extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['id','nome','email','telefone','mensagem'];
+    protected $fillable = ['id', 'nome', 'email', 'telefone', 'mensagem'];
 
 }

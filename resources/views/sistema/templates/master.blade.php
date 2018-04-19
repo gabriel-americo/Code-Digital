@@ -4,7 +4,7 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8" />
-        <title>Sistema</title>
+        <title>Code Digital | Sistema</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -37,12 +37,11 @@
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
 
         <div class="page-header navbar navbar-fixed-top">
-
             <div class="page-header-inner ">
 
                 <div class="page-logo">
                     <a href="{{ route('sistema.index') }}">
-                        <img src="/img_sistema/logo/logo-3.png" alt="logo" class="logo-default" /> </a>
+                        <img src="/img/sistema/logo/logo-120.png" alt="logo" class="logo-default" /> </a>
                     <div class="menu-toggler sidebar-toggler"></div>
                 </div>
 
@@ -51,10 +50,9 @@
                 <div class="page-top">
                     <div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
-
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="/img_sistema/perfil/{{ Auth::user()->imagem }}" />
+                                    <img alt="" class="img-circle" src="/img/sistema/perfil/{{ Auth::user()->imagem }}" />
                                     <span class="username username-hide-on-mobile"> {{ Auth::user()->nome }} </span>
                                     <i class="fas fa-arrow-alt-circle-down"></i>
                                 </a>
@@ -85,7 +83,7 @@
         </div>
 
         <div class="page-footer">
-            <div class="page-footer-inner"> 2018 &copy; Sistema
+            <div class="page-footer-inner"> 2018 &copy; Code Digital
                 <div class="scroll-to-top">
                     <i class="icon-arrow-up"></i>
                 </div>

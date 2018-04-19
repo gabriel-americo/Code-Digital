@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+
 use App\Http\Requests\TrabalhosCreateRequest;
 use App\Http\Requests\TrabalhosUpdateRequest;
 use App\Repositories\TrabalhosRepository;

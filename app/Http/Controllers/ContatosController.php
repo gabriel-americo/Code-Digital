@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\ContatoCreateRequest;
@@ -17,8 +14,8 @@ use App\Validators\ContatoValidator;
  *
  * @package namespace App\Http\Controllers;
  */
-class ContatosController extends Controller
-{
+class ContatosController extends Controller {
+
     /**
      * @var ContatoRepository
      */
@@ -35,10 +32,9 @@ class ContatosController extends Controller
      * @param ContatoRepository $repository
      * @param ContatoValidator $validator
      */
-    public function __construct(ContatoRepository $repository, ContatoValidator $validator)
-    {
+    public function __construct(ContatoRepository $repository, ContatoValidator $validator) {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
     }
 
     /**
@@ -46,8 +42,8 @@ class ContatosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
+        
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $contatos = $this->repository->all();
 
@@ -63,8 +59,7 @@ class ContatosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(ContatoCreateRequest $request)
-    {
+    public function store(ContatoCreateRequest $request) {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
@@ -73,20 +68,15 @@ class ContatosController extends Controller
 
             $response = [
                 'message' => 'Contato created.',
-                'data'    => $contato->toArray(),
+                'data' => $contato->toArray(),
             ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
 
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
+                            'error' => true,
+                            'message' => $e->getMessageBag()
                 ]);
             }
 
@@ -101,16 +91,8 @@ class ContatosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $contato = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $contato,
-            ]);
-        }
 
         return view('contatos.show', compact('contato'));
     }
@@ -122,8 +104,7 @@ class ContatosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $contato = $this->repository->find($id);
 
         return view('contatos.edit', compact('contato'));
@@ -139,8 +120,7 @@ class ContatosController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(ContatoUpdateRequest $request, $id)
-    {
+    public function update(ContatoUpdateRequest $request, $id) {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
@@ -149,7 +129,7 @@ class ContatosController extends Controller
 
             $response = [
                 'message' => 'Contato updated.',
-                'data'    => $contato->toArray(),
+                'data' => $contato->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -163,15 +143,14 @@ class ContatosController extends Controller
             if ($request->wantsJson()) {
 
                 return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
+                            'error' => true,
+                            'message' => $e->getMessageBag()
                 ]);
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -180,18 +159,11 @@ class ContatosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
+        
         $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Contato deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
 
         return redirect()->back()->with('message', 'Contato deleted.');
     }
+
 }

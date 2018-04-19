@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use Prettus\Validator\Contracts\ValidatorInterface;
-use App\Repositories\BannersRepository;
-use App\Validators\BannersValidator;
+use App\Repositories\PortifoliosRepository;
+use App\Validators\PortifoliosValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Illuminate\Database\QueryException;
 use Exception;
@@ -14,7 +14,7 @@ class PortifolioService {
     private $repository;
     private $validator;
 
-    public function __construct(UserRepository $repository, UserValidator $validator) {
+    public function __construct(PortifoliosRepository $repository, PortifoliosValidator $validator) {
 
         $this->repository = $repository;
         $this->validator = $validator;

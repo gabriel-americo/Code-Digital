@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Database\QueryException;
-//use Illuminate\Support\Facades\Hash;
 use App\Repositories\UserRepository;
 use App\Repositories\BannersRepository;
 use App\Validators\UserValidator;
-//use Illuminate\Support\Facades\DB;
-//use Exception;
 use Auth;
 
 class DashboardController extends Controller {
@@ -18,6 +14,7 @@ class DashboardController extends Controller {
     private $validator;
 
     public function __construct(UserRepository $repository, UserValidator $validator, BannersRepository $r_banner) {
+        
         $this->repository = $repository;
         $this->r_banner = $r_banner;
         $this->validator = $validator;

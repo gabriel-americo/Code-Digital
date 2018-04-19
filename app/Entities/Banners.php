@@ -54,8 +54,6 @@ class Banners extends Model implements Transformable {
 
     public function getFormattedDataFimAttribute() {
 
-        $data_fim = $this->attributes['data_fim'];
-
         $data_fim = explode('-', $this->attributes['data_fim']);
 
         if (count($data_fim) != 3) {

@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @package namespace App\Entities;
  */
-class Trabalhos extends Model implements Transformable
-{
+class Trabalhos extends Model implements Transformable {
+
     use TransformableTrait;
     use SoftDeletes;
 

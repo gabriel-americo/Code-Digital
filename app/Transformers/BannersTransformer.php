@@ -10,8 +10,8 @@ use App\Entities\Banners;
  *
  * @package namespace App\Transformers;
  */
-class BannersTransformer extends TransformerAbstract
-{
+class BannersTransformer extends TransformerAbstract {
+
     /**
      * Transform the Banners entity.
      *
@@ -19,15 +19,14 @@ class BannersTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(Banners $model)
-    {
+    public function transform(Banners $model) {
         return [
-            'id'         => (int) $model->id,
-
+            'id' => (int) $model->id,
+            
             /* place your other model properties here */
-
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
     }
+
 }

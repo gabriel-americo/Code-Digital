@@ -24,7 +24,7 @@ class TrabalhoService {
     public function store($data) {
 
         try {
-            
+
             /* Imagem */
             $file = $data['imagem'];
             $destinationPath = 'img/trabalho';
@@ -32,7 +32,7 @@ class TrabalhoService {
             //Move Uploaded File
             $file->move($destinationPath, $file->getClientOriginalName());
             $data['imagem'] = $file->getClientOriginalName();
-            
+
             $data['user_id'] = Auth::user()->id;
 
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
@@ -61,7 +61,7 @@ class TrabalhoService {
     public function update($data, $id) {
 
         try {
-            
+
             if (!empty($data['imagem'])) {
 
                 /* Imagem */

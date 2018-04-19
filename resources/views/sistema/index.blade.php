@@ -4,7 +4,7 @@
 
 <div class="page-content-wrapper">
     <div class="page-content">
-        <h1 class="page-title"> Admin Sistema
+        <h1 class="page-title">
             <small>Bem-vindo ao sistema de gerenciamento!</small>
         </h1>
         <div class="page-bar">

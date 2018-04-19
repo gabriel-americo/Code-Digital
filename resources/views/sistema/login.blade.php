@@ -20,7 +20,7 @@
             <div class="row bs-reset">
                 <div class="col-md-6 bs-reset mt-login-5-bsfix">
                     <div class="login-bg" style="background-image:url(/assets/pages/img/login/bg1.jpg)">
-                        <img class="login-logo" src="/img_sistema/logo/logo-2.png" /> 
+                        <img class="login-logo" src="/img/sistema/logo/logo-2.png" /> 
                     </div>
                 </div>
                 <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
@@ -70,7 +70,7 @@
                         <div class="row bs-reset">
                             <div class="col-xs-7 bs-reset">
                                 <div class="login-copyright text-right">
-                                    <p>Copyright &copy; Sistema 2018</p>
+                                    <p>Copyright &copy; Code Digital 2018</p>
                                 </div>
                             </div>
                         </div>

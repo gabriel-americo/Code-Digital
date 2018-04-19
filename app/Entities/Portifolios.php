@@ -11,8 +11,8 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Entities;
  */
-class Portifolios extends Model implements Transformable
-{
+class Portifolios extends Model implements Transformable {
+
     use TransformableTrait;
 
     /**
@@ -21,10 +21,10 @@ class Portifolios extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
-    
-     public function portifolio() {
-        
-    	return $this->belongsTo(CategoriaPortifolio::class);
+
+    public function portifolio() {
+
+        return $this->belongsTo(CategoriaPortifolio::class);
     }
 
 }

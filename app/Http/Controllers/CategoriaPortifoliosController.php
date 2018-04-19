@@ -34,6 +34,7 @@ class CategoriaPortifoliosController extends Controller {
      * @param CategoriaPortifolioValidator $validator
      */
     public function __construct(CategoriaPortifolioRepository $repository, CategoriaPortifolioValidator $validator, CategoriaPortifolioService $service) {
+        
         $this->repository = $repository;
         $this->validator = $validator;
         $this->service = $service;
@@ -45,7 +46,7 @@ class CategoriaPortifoliosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        
+
         $categoriaPortifolios = $this->repository->all();
 
         return view('categoriaPortifolios.index', [
@@ -88,14 +89,8 @@ class CategoriaPortifoliosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
+        
         $categoriaPortifolio = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                        'data' => $categoriaPortifolio,
-            ]);
-        }
 
         return view('categoriaPortifolios.show', compact('categoriaPortifolio'));
     }
@@ -108,6 +103,7 @@ class CategoriaPortifoliosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        
         $categoriaPortifolio = $this->repository->find($id);
 
         return view('categoriaPortifolios.edit', compact('categoriaPortifolio'));
@@ -163,15 +159,8 @@ class CategoriaPortifoliosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
+        
         $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                        'message' => 'CategoriaPortifolio deleted.',
-                        'deleted' => $deleted,
-            ]);
-        }
 
         return redirect()->back()->with('message', 'CategoriaPortifolio deleted.');
     }

@@ -8,7 +8,6 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Services\UserService;
-use Illuminate\View;
 
 /**
  * Class UsersController.
@@ -154,7 +153,6 @@ class UsersController extends Controller {
     public function getUserXls() {
 
         $users = $this->repository->all();
-
         $data = array();
 
         foreach ($users as $user) {

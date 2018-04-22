@@ -40,8 +40,4 @@
         @include('sistema.templates.formulario.password', ['label' => 'Senha', 'input' => 'password', 'attributes' => ['class' => 'form-control']])
     </div>
 
-    <div class="form-group">
-        <div name="summernote" id="summernote_1"> </div>
-    </div>
-
 </div>

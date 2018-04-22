@@ -70,16 +70,9 @@
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column"
-                               id="sample_1" data-form="deleteForm">
+                        <table class="table table-striped table-hover table-checkable order-column" id="sample_1" data-form="deleteForm">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"/>
-                                            <span></span>
-                                        </label>
-                                    </th>
                                     <th> #</th>
                                     <th> CPF</th>
                                     <th> Nome</th>
@@ -95,12 +88,6 @@
                             <tbody>
                                 @foreach($users as $user)
                                 <tr class="odd gradeX">
-                                    <td>
-                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                            <input type="checkbox" class="checkboxes" value="1"/>
-                                            <span></span>
-                                        </label>
-                                    </td>
                                     <td>{{ $user->id }} </td>
                                     <td>{{ $user->formatted_cpf }}</td>
                                     <td>{{ $user->nome }}</td>

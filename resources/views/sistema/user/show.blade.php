@@ -3,9 +3,7 @@
 @section('conteudo-view')
 
 <div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
         <h1 class="page-title"> Usuário </h1>
         <div class="page-bar">
             <ul class="page-breadcrumb">
@@ -22,38 +20,37 @@
 
         <div class="row">
             <div class="col-md-12">
-                <!-- BEGIN PROFILE SIDEBAR -->
                 <div class="profile-sidebar">
-                    <!-- PORTLET MAIN -->
                     <div class="portlet light profile-sidebar-portlet ">
-                        <!-- SIDEBAR USERPIC -->
                         <div class="profile-userpic">
-                            <img src="/img_sistema/perfil/{{ $user->imagem }}" class="img-responsive" alt=""> </div>
-                        <!-- END SIDEBAR USERPIC -->
-                        <!-- SIDEBAR USER TITLE -->
+                            <img src="/img_sistema/perfil/{{ $user->imagem }}" class="img-responsive" alt=""> 
+                        </div>
                         <div class="profile-usertitle">
                             <div class="profile-usertitle-name"> {{ $user->nome }} </div>
-                            <div class="profile-usertitle-job"> CPF: {{ $user->cpf }} </div>
                         </div>
-                        <!-- END SIDEBAR USER TITLE -->
-                        <!-- SIDEBAR BUTTONS -->
                         <div class="profile-userbuttons">
-                            <button type="button" class="btn btn-circle green btn-sm">Follow</button>
-                            <button type="button" class="btn btn-circle red btn-sm">Message</button>
+                            <button type="button" class="btn btn-circle green btn-sm">Editar</button>
+                            <button type="button" class="btn btn-circle red btn-sm">Excluir</button>
                         </div>
-                        <!-- END SIDEBAR BUTTONS -->
-                        <!-- SIDEBAR MENU -->
                         <div class="profile-usermenu"> </div>
-                        <!-- END MENU -->
                     </div>
-                    <!-- END PORTLET MAIN -->
+
+                    <div class="portlet light ">
+                        <div>
+                            <h4 class="profile-desc-title">Dados</h4>
+                            <div class="desc"> CPF: {{ $user->cpf }} </div>
+                            <div class="desc"> Nascimento: {{ $user->formatted_nascimento }} </div>
+                            <div class="desc"> Telefone: {{ $user->formatted_telefone }} </div>
+                            <div class="desc"> Sexo: {{ $user->formatted_sexo }} </div>
+                            <div class="desc"> E-mail: {{ $user->email }} </div>
+                            <div class="desc"> Status: {{ $user->status }} </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- END BEGIN PROFILE SIDEBAR -->
-                <!-- BEGIN PROFILE CONTENT -->
+
                 <div class="profile-content">
                     <div class="row">
-                        <div class="col-md-6">
-                            <!-- BEGIN PORTLET -->
+                        <div class="col-md-8">
                             <div class="portlet light ">
                                 <div class="portlet-title">
                                     <div class="caption caption-md">
@@ -65,10 +62,8 @@
                                     <p>{{ $user->descricao }}</p>
                                 </div>
                             </div>
-                            <!-- END PORTLET -->
                         </div>
                     </div>
-                    <!-- END PROFILE CONTENT -->
                 </div>
             </div>
 

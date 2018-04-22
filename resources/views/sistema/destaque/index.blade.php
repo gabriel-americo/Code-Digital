@@ -47,16 +47,9 @@
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column"
-                               id="sample_1" data-form="deleteForm">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" data-form="deleteForm">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                            <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes"/>
-                                            <span></span>
-                                        </label>
-                                    </th>
                                     <th> #</th>
                                     <th> Icone</th>
                                     <th> Titulo</th>
@@ -66,12 +59,6 @@
                             <tbody>
                                 @foreach($destaques as $destaque)
                                 <tr class="odd gradeX">
-                                    <td>
-                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                            <input type="checkbox" class="checkboxes" value="1"/>
-                                            <span></span>
-                                        </label>
-                                    </td>
                                     <td>{{ $destaque->id }} </td>
                                     <td>{{ $destaque->icone }}</td>
                                     <td>{{ $destaque->titulo }}</td>

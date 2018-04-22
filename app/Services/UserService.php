@@ -27,7 +27,7 @@ class UserService {
             /* Imagem */
             if (!empty($data['imagem'])) {
                 $file = $data['imagem'];
-                $destinationPath = 'img_sistema/perfil';
+                $destinationPath = 'img/sistema/perfil';
 
                 /* Move Uploaded File */
                 $file->move($destinationPath, $file->getClientOriginalName());
@@ -81,7 +81,7 @@ class UserService {
             /* Imagem */
             if (!empty($data['imagem'])) {
                 $file = $data['imagem'];
-                $destinationPath = 'img_sistema/perfil';
+                $destinationPath = 'img/sistema/perfil';
 
                 /* Move Uploaded File */
                 $file->move($destinationPath, $file->getClientOriginalName());

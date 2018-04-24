@@ -18,11 +18,13 @@
         <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/cubeportfolio/css/cubeportfolio.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/pages/css/portfolio.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="/assets/layouts/layout2/css/layout.min.css" rel="stylesheet" type="text/css" />
@@ -116,6 +118,7 @@
         <script src="/assets/global/plugins/jquery.input-ip-address-control-1.0.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -124,6 +127,7 @@
         <script src="/assets/pages/scripts/components-editors.min.js" type="text/javascript"></script>
         <script src="/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
         <script src="/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
+        <script src="/assets/pages/scripts/portfolio-1.min.js" type="text/javascript"></script>
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
         <!-- BEGIN CUSTOM SCRIPTS -->

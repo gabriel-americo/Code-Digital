@@ -15,13 +15,12 @@
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <span>Dashboard</span>
+                    <span>Painel de Controle</span>
                 </li>
             </ul>
         </div>
 
         <div class="row">
-            @if(Auth::user()->tipo == 1)
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat2 ">
                     <div class="display">
@@ -37,8 +36,7 @@
                     </div>
                 </div>
             </div>
-            @endif
-            
+
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat2 ">
                     <div class="display">
@@ -54,9 +52,39 @@
                     </div>
                 </div>
             </div>
-
+            
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 ">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-blue-sharp">
+                                <span data-counter="counterup" data-value="{{ $count_destaque }}">0</span>
+                            </h3>
+                            <small>DESTAQUES</small>
+                        </div>
+                        <div class="icon">
+                            <i class="fa-2x fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat2 ">
+                    <div class="display">
+                        <div class="number">
+                            <h3 class="font-purple-soft">
+                                <span data-counter="counterup" data-value="{{ $count_contato }}">0</span>
+                            </h3>
+                            <small>CONTATO</small>
+                        </div>
+                        <div class="icon">
+                            <i class="fa-2x fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>
 

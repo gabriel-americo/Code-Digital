@@ -47,30 +47,32 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            @foreach($banners as $banner)
-                            <div class="col-sm-6 col-md-3" data-form="deleteForm">
-                                <div class="thumbnail">
-                                    <img src="/img/background/{{ $banner->imagem }}" alt=""
-                                         style="width: 100%; height: 200px;">
-                                    <div class="caption">
-                                        <h3>{{ $banner->nome }}</h3>
-                                        <p>{{ $banner->formatted_status }} </p>
-                                        @if(!empty($banner->formatted_data_inicio) && !empty($banner->formatted_data_fim))
-                                        <p>Data inicio: {{ $banner->formatted_data_inicio }} </p>
-                                        <p>Data fim: {{ $banner->formatted_data_fim }} </p>
-                                        @endif
-                                        <p class="pull-left button-mr10">
-                                            <a href="{{ route('banner.edit', $banner->id) }}" class="btn blue">
-                                                <i class="icon-pencil"></i> Editar </a>
-                                            {!! Form::open(['route' => ['banner.destroy', $banner->id], 'method' => 'delete', 'class' =>'form-delete']) !!}
-                                            @include('sistema.templates.formulario.submit', ['input' => 'Excluir', 'attributes' => ['class' => 'btn btn-danger']])
-                                            {!! Form::close() !!}
-                                        </p>
+                        <div class="portfolio-content portfolio-1">
+                            <div id="js-grid-juicy-projects" class="cbp">
+                                @foreach($banners as $banner)
+                                <div class="cbp-item graphic" data-form="deleteForm">
+                                    <div class="cbp-caption">
+                                        <div class="cbp-caption-defaultWrap">
+                                            <img src="/img/background/{{ $banner->imagem }}" alt="{{ $banner->nome }}"> </div>
+                                        <div class="cbp-caption-activeWrap">
+                                            <div class="cbp-l-caption-alignCenter">
+                                                <div class="cbp-l-caption-body">
+                                                    <a href="{{ route('banner.edit', $banner->id) }}" class="cbp-singlePage cbp-l-caption-buttonLeft btn blue uppercase btn blue uppercase"> <i class="icon-pencil"></i> Editar </a>
+                                                    {!! Form::open(['route' => ['banner.destroy', $banner->id], 'method' => 'delete', 'class' =>'form-delete']) !!}
+                                                    @include('sistema.templates.formulario.submit', ['input' => 'Excluir', 'attributes' => ['class' => 'cbp-lightbox cbp-l-caption-buttonRight btn red uppercase btn red uppercase']])
+                                                    {!! Form::close() !!}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">{{ $banner->nome }}</div>
+                                    <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">{{ $banner->formatted_status }}</div>
+                                    @if(!empty($banner->formatted_data_inicio) && !empty($banner->formatted_data_fim))
+                                    <div class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">Data inicio: {{ $banner->formatted_data_inicio }} / Data termino: {{ $banner->formatted_data_fim }}</div>
+                                    @endif
                                 </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>

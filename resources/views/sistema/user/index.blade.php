@@ -29,11 +29,7 @@
                             <span class="caption-subject bold uppercase"> Usuários</span>
                         </div>
                     </div>
-
-                    @if(session('success'))
-                    <h4 class="bold">{{ session('success')['message'] }}</h4>
-                    @endif
-
+                    
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="row">

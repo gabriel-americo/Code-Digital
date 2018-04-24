@@ -19,6 +19,7 @@
         <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/cubeportfolio/css/cubeportfolio.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="/assets/global/plugins/bootstrap-summernote/summernote.css" rel="stylesheet" type="text/css" />
@@ -32,7 +33,7 @@
         <link href="/assets/layouts/layout2/css/custom.css" rel="stylesheet" type="text/css" />
         <link href="/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> 
+        <link rel="shortcut icon" href="favicon.ico" />
     </head>
     <!-- END HEAD -->
 
@@ -119,6 +120,7 @@
         <script src="/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/bootstrap-summernote/summernote.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+        <script src="/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -128,11 +130,25 @@
         <script src="/assets/pages/scripts/form-input-mask.js" type="text/javascript"></script>
         <script src="/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
         <script src="/assets/pages/scripts/portfolio-1.min.js" type="text/javascript"></script>
+        <script src="/assets/pages/scripts/ui-sweetalert.min.js" type="text/javascript"></script>
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="/assets/layouts/layout2/scripts/layout.min.js" type="text/javascript"></script>
         <!-- BEGIN CUSTOM SCRIPTS -->
         <script src="/assets/pages/scripts/custom.js" type="text/javascript"></script>
         <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+        @if(session('success'))
+        <script>
+            swal({
+            title: "{{ session('success')['message'] }}",
+                    type: "success",
+                    allow: "true",
+                    confirm: "btn-success",
+                    html: true,
+                    confirmButtonText: 'OK'
+            });
+        </script>
+        @endif
 
     </body>
 </html>

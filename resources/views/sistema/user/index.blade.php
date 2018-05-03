@@ -43,22 +43,17 @@
 
                                 <div class="col-md-6">
                                     <div class="btn-group pull-right">
-                                        <button class="btn green  btn-outline dropdown-toggle"
-                                                data-toggle="dropdown">Ferramentas
-                                            <i class="fa fa-angle-down"></i>
+                                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Ferramentas <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu pull-right">
                                             <li>
-                                                <a href="javascript:window.print()">
-                                                    <i class="fas fa-print"></i> Imprimir </a>
+                                                <a href="javascript:window.print()"> <i class="fas fa-print"></i> Imprimir </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:;">
-                                                    <i class="far fa-file-pdf"></i> Salvar como PDF </a>
+                                                <a href="javascript:;"> <i class="far fa-file-pdf"></i> Salvar como PDF </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('sistema.user.export') }}">
-                                                    <i class="far fa-file-excel"></i> Exportar para Excel </a>
+                                                <a href="{{ route('sistema.user.export') }}"> <i class="far fa-file-excel"></i> Exportar para Excel </a>
                                             </li>
                                         </ul>
                                     </div>

@@ -11,6 +11,10 @@
   |
  */
 
+ /* Website */
+
+/* Routes to home page */
+Route::get('/', ['as' => 'home','uses' => 'Controller@homepage']);
 
 /* Dashboard */
 
@@ -41,8 +45,3 @@ Route::group(['middleware' => 'login'], function() {
 
     Route::get('sistema/contato', ['as' => 'contato.index', 'uses' => 'ContatosController@index']);
 });
-
-/* Website */
-
-/* Routes to home page */
-Route::get('/', ['uses' => 'Controller@homepage']);

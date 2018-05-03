@@ -6,7 +6,7 @@
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
-            <h1 class="page-title"> Destaque </h1>
+            <h1 class="page-title"> Processo </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -15,7 +15,7 @@
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
-                        <span>Destaques</span>
+                        <span>Processos</span>
                     </li>
                 </ul>
             </div>
@@ -34,8 +34,8 @@
                 <div class="col-md-12 ">
                     <div class="portlet light ">
                         <div class="portlet-body form">
-                            {!! Form::open(['route' => 'destaque.store', 'method' => 'post', 'files' => true]) !!}
-                            @include('sistema.destaque.form-fields')
+                            {!! Form::open(['route' => 'processo.store', 'method' => 'post', 'files' => true]) !!}
+                            @include('sistema.processo.form-fields')
                             <div class="form-actions left">
                                 @include('sistema.templates.formulario.submit', ['input' => 'Cadastrar', 'attributes' => ['class' => 'btn green']])
                             </div>

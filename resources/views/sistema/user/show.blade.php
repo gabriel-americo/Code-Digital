@@ -23,7 +23,7 @@
                 <div class="profile-sidebar">
                     <div class="portlet light profile-sidebar-portlet ">
                         <div class="profile-userpic">
-                            <img src="/img_sistema/perfil/{{ $user->imagem }}" class="img-responsive" alt=""> 
+                            <img src="/img/sistema/perfil/{{ $user->imagem }}" class="img-responsive" alt="{{ $user->nome }}"> 
                         </div>
                         <div class="profile-usertitle">
                             <div class="profile-usertitle-name"> {{ $user->nome }} </div>

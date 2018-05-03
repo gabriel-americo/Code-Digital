@@ -6,6 +6,7 @@ use App\Http\Requests\DestaqueCreateRequest;
 use App\Http\Requests\DestaqueUpdateRequest;
 use App\Repositories\DestaqueRepository;
 use App\Validators\DestaqueValidator;
+use App\Services\DestaqueService;
 
 /**
  * Class DestaquesController.
@@ -15,6 +16,7 @@ use App\Validators\DestaqueValidator;
 class DestaquesController extends Controller {
 
     protected $repository;
+    protected $service;
     protected $validator;
 
     /**
@@ -23,8 +25,9 @@ class DestaquesController extends Controller {
      * @param DestaqueRepository $repository
      * @param DestaqueValidator $validator
      */
-    public function __construct(DestaqueRepository $repository, DestaqueValidator $validator) {
+    public function __construct(DestaqueRepository $repository, DestaqueValidator $validator, DestaqueService $service) {
         $this->repository = $repository;
+        $this->service = $service;
         $this->validator = $validator;
     }
 

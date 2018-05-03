@@ -10,7 +10,7 @@
                 </a>
             </li>
             @endif
-            <li class="nav-item {{ request()->is('sistema/banner', 'sistema/banner/*') ? 'start active open' : '' }}">
+            <li class="nav-item start {{ request()->is('sistema/banner', 'sistema/banner/*') ? 'active open' : '' }}">
                 <a href="{{ route('banner.index') }}" class="nav-link nav-toggle">
                     <i class="fas fa-image"></i>
                     <span class="title">Banner</span>
@@ -18,7 +18,7 @@
                 </a>
             </li>
 
-            <li class="nav-item {{ request()->is('sistema/destaque', 'sistema/destaque/*') ? 'start active open' : '' }}">
+            <li class="nav-item start {{ request()->is('sistema/destaque', 'sistema/destaque/*') ? 'active open' : '' }}">
                 <a href="{{ route('destaque.index') }}" class="nav-link nav-toggle">
                     <i class="fas fa-star"></i>
                     <span class="title">Destaque</span>
@@ -58,8 +58,8 @@
                 </a>
             </li>
 
-            <li class="nav-item {{ request()->is('sistema/site', 'sistema/site/*') ? 'start active open' : '' }}">
-                <a href="{{ route('site.index') }}" class="nav-link nav-toggle">
+            <li class="nav-item">
+                <a href="{{ route('home') }}" target="_blank" class="nav-link nav-toggle">
                     <i class="fa fa-desktop"></i>
                     <span class="title">Veja o Site</span>
                     <span class="selected"></span>

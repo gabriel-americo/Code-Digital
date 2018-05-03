@@ -36,17 +36,17 @@ class ProcessosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+
         $processos = $this->repository->all();
 
-        if (request()->wantsJson()) {
+        return view('sistema.processo.index', [
+            'processos' => $processos
+        ]);
+    }
 
-            return response()->json([
-                        'data' => $processos,
-            ]);
-        }
+    public function create() {
 
-        return view('processos.index', compact('processos'));
+        return view('sistema.processo.create');
     }
 
     /**
@@ -59,33 +59,16 @@ class ProcessosController extends Controller {
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(ProcessoCreateRequest $request) {
-        try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+        $request = $this->service->store($request->all());
+        $processo = $request['success'] ? $request['data'] : null;
 
-            $processo = $this->repository->create($request->all());
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-            $response = [
-                'message' => 'Processo created.',
-                'data' => $processo->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                            'error' => true,
-                            'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        return redirect()->route('processo.index');
     }
 
     /**
@@ -96,16 +79,10 @@ class ProcessosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
+
         $processo = $this->repository->find($id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                        'data' => $processo,
-            ]);
-        }
-
-        return view('processos.show', compact('processo'));
+        return view('sistema.processo.show');
     }
 
     /**
@@ -116,6 +93,7 @@ class ProcessosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+
         $processo = $this->repository->find($id);
 
         return view('processos.edit', compact('processo'));
@@ -132,35 +110,16 @@ class ProcessosController extends Controller {
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(ProcessoUpdateRequest $request, $id) {
-        try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+        $request = $this->service->update($request->all(), $id);
+        $processo = $request['success'] ? $request['data'] : null;
 
-            $processo = $this->repository->update($request->all(), $id);
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-            $response = [
-                'message' => 'Processo updated.',
-                'data' => $processo->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                            'error' => true,
-                            'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        return redirect()->route('processo.index');
     }
 
     /**
@@ -171,17 +130,15 @@ class ProcessosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $deleted = $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
+        $request = $this->service->destroy($id);
 
-            return response()->json([
-                        'message' => 'Processo deleted.',
-                        'deleted' => $deleted,
-            ]);
-        }
+        session()->flash('success', [
+            'success' => $request['success'],
+            'message' => $request['message'],
+        ]);
 
-        return redirect()->back()->with('message', 'Processo deleted.');
+        return redirect()->route('processo.index');
     }
 
 }

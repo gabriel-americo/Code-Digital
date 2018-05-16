@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\ProcessoCreateRequest;
 use App\Http\Requests\ProcessoUpdateRequest;
 use App\Repositories\ProcessoRepository;
 use App\Validators\ProcessoValidator;
+use App\Services\ProcessoService;
 
 /**
  * Class ProcessosController.
@@ -17,6 +16,7 @@ use App\Validators\ProcessoValidator;
 class ProcessosController extends Controller {
 
     protected $repository;
+    protected $service;
     protected $validator;
 
     /**
@@ -25,8 +25,9 @@ class ProcessosController extends Controller {
      * @param ProcessoRepository $repository
      * @param ProcessoValidator $validator
      */
-    public function __construct(ProcessoRepository $repository, ProcessoValidator $validator) {
+    public function __construct(ProcessoRepository $repository, ProcessoValidator $validator, ProcessoService $service) {
         $this->repository = $repository;
+        $this->service = $service;
         $this->validator = $validator;
     }
 
@@ -96,7 +97,9 @@ class ProcessosController extends Controller {
 
         $processo = $this->repository->find($id);
 
-        return view('processos.edit', compact('processo'));
+        return view('sistema.processo.edit', [
+            'processo' => $processo,
+        ]);
     }
 
     /**

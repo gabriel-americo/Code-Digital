@@ -47,7 +47,7 @@
                             </div>
                         </div>
 
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1" data-form="deleteForm">
+                        <table class="table table-striped table-hover table-checkable order-column" id="sample_1" data-form="deleteForm">
                             <thead>
                                 <tr>
                                     <th> #</th>

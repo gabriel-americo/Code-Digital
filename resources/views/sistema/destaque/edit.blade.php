@@ -39,7 +39,7 @@
             <div class="col-md-12 ">
                 <div class="portlet light ">
                     <div class="portlet-body form">
-                        {!! Form::model($user, ['route' => ['destaque.update', $user->id], 'method' => 'put', 'files' => true]) !!}
+                        {!! Form::model($destaque, ['route' => ['destaque.update', $destaque->id], 'method' => 'put', 'files' => true]) !!}
                         @include('sistema.destaque.form-fields')
                         <div class="form-actions left">
                             @include('sistema.templates.formulario.submit', ['input' => 'Atualizar', 'attributes' => ['class' => 'btn green']])

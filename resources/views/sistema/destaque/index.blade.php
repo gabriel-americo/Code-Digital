@@ -69,7 +69,7 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li>
-                                                    <a href="{{ route('user.edit', $destaque->id) }}"> <i class="icon-docs"></i> Editar </a>
+                                                    <a href="{{ route('destaque.edit', $destaque->id) }}"> <i class="icon-docs"></i> Editar </a>
                                                 </li>
                                                 <li>
                                                     <div class="trash">

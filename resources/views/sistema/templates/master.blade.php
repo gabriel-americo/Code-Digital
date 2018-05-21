@@ -56,8 +56,7 @@
                             <li class="dropdown dropdown-user">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <img alt="" class="img-circle" src="/img/sistema/perfil/{{ Auth::user()->imagem }}" />
-                                    <span class="username username-hide-on-mobile"> {{ Auth::user()->nome }} </span>
-                                    <i class="fas fa-arrow-alt-circle-down"></i>
+                                    <span class="username username-hide-on-mobile"> {{ Auth::user()->nome }} </span> <i class="fas fa-arrow-alt-circle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
@@ -103,13 +102,9 @@
         <!-- BEGIN CORE PLUGINS -->
         <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="/assets/global/plugins/moment.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/morris/morris.min.js" type="text/javascript"></script>
-        <script src="/assets/global/plugins/morris/raphael-min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
         <script src="/assets/global/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
         <script src="/assets/global/scripts/datatable.js" type="text/javascript"></script>

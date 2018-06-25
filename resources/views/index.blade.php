@@ -8,7 +8,7 @@
         <meta name="author" content="">
         <title>Code Digital</title>
         <!-- Bootstrap Core CSS -->
-        <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
         <!-- Retina.js - Load first for faster HQ mobile images. -->
         <script src="/js/plugins/retina/retina.min.js"></script>
         <!-- Font Awesome -->
@@ -30,6 +30,7 @@
         <link href="/css/plugins/background.css" rel="stylesheet" type="text/css">
         <link href="/css/plugins/animate.css" rel="stylesheet" type="text/css">
         <link href="/css/vitality-red.css" rel="stylesheet">
+        <link href="/css/custom.css" rel="stylesheet">
         <!-- IE8 support for HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -49,7 +50,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand page-scroll" href="#page-top">
-                        <img src="/img/logo/logo-2.png" class="img-responsive" alt="">
+                        <img src="/img/logo/logo-2.png" class="img-responsive logo-pequeno" alt="logo">
                     </a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
